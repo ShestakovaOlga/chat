@@ -1,0 +1,109 @@
+import React, { useState, useGlobal } from 'reactn';
+import { Button } from 'react-bootstrap';
+import { Link, withRouter } from 'react-router-dom';
+import { sendSignup, Login } from '../server';
+
+
+function Signup(props) {
+    const [fullname, setFullname] = useState('')
+    const [mail, setMail] = useState('')
+    const [password, setPassword] = useState('')
+
+    return <div style={{
+        border: '1px solid green',
+        width: '50vw',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontFamily: "'Muli', sans-serif",
+        color: 'gray',
+    }}>
+        <div style={{
+            width: '400px',
+            display: 'flex',
+            flexDirection: 'column',
+        }}>
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontFamily: "'Lexend Deca', sans-serif",
+                fontSize: '2rem',
+                color: 'black'
+            }}>Sign up</div>
+
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
+                <label htmlFor="">Full name</label>
+                <input onChange={(e) => { setFullname(e.target.value) }} style={{
+                    margin: '15px 0',
+                    padding: 10,
+                    border: 0,
+                    borderBottom: '1px solid gray',
+                    outline: 'none',
+                    backgroundColor: 'white',
+                    fontFamily: "'Muli', sans-serif",
+                    fontSize: '1rem'
+                }}
+                    type="username" name="" id="" value={fullname} />
+                <label htmlFor="">Email address</label>
+                <input onChange={(e) => { setMail(e.target.value) }} style={{
+                    margin: '15px 0',
+                    padding: 10,
+                    border: 0,
+                    borderBottom: '1px solid gray',
+                    outline: 'none',
+                    backgroundColor: 'white',
+                    fontFamily: "'Muli', sans-serif",
+                    fontSize: '1rem'
+                }}
+                    type="email" name="" id="" value={mail} />
+                <label htmlFor="">Create password</label>
+                <input onChange={(e) => { setPassword(e.target.value) }} style={{
+                    margin: '15px 0',
+                    padding: 10,
+                    border: 0,
+                    borderBottom: '1px solid gray',
+                    outline: 'none',
+                    backgroundColor: 'white',
+                    fontFamily: "'Muli', sans-serif",
+                    fontSize: '1rem'
+                }} type="password" name="" id="" value={password} />
+
+                <Button onClick={() => {
+                    sendSignup(fullname, mail, password)
+                    props.history.push('/')
+                    setFullname('')
+                    setMail('')
+                    setPassword('')
+                }} style={{
+                    padding: 6,
+                    width: 200,
+                    borderRadius: '40px',
+                    backgroundColor: '#815ae6',
+                    color: 'white',
+                    border: 'none',
+                    outline: 'none',
+                    fontSize: '1rem',
+                    margin: '20px 0 20px 200px',
+                    fontFamily: "'Lexend Deca', sans-serif",
+                }} variant="primary" type="submit">
+                    Sign up
+                </Button>
+                <span>Already have an account?
+
+                    <Link to='/' style={{
+                        color: '#815ae6',
+                        textDecoration: 'none',
+                    }} >Long in</Link>
+
+                </span>
+            </div>
+
+        </div>
+    </div>
+}
+export default withRouter(Signup)
