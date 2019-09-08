@@ -1,30 +1,55 @@
-import React from 'react';
+import React, { useGlobal } from 'reactn';
 import { Logout } from '../server';
+import { IoMdPerson } from "react-icons/io";
+import { IoIosMenu } from "react-icons/io";
 
-export function Header(){
+export function Header() {
+    const [mode] = useGlobal('mode')
+    const [showMenu, setShowMenu] = useGlobal('showMenu')
     return <div style={{
-        width:'100%',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
     }}>
-        <img src="
-        " alt="WorkLine"/>
-        
-        <button onClick={() => {
-            Logout()
-        }} style={{
-            padding: 6,
-            width: 80,
-            borderRadius: '40px',
-            backgroundColor: '#815ae6',
-            color: 'white',
-            border: 'none',
-            outline: 'none',
-            fontSize: '0.8rem',
-            margin: '10px 20px',
-            fontFamily: "'Lexend Deca', sans-serif",
-            cursor: 'pointer',
-        }}>Log out</button>
+        <img src="" alt="WorkLine" />
+
+
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+        }}>
+            <button onClick={() => {
+                Logout()
+            }} style={{
+                padding: 4,
+                width: 80,
+                borderRadius: '40px',
+                backgroundColor: '#815ae6',
+                color: 'white',
+                border: 'none',
+                outline: 'none',
+                fontSize: '0.8rem',
+                margin: '10px 20px',
+                fontFamily: "'Lexend Deca', sans-serif",
+                cursor: 'pointer',
+            }}>Log out</button>
+            {['tablet', 'phone'].includes(mode) && <button style={{
+                padding: '1px 4px',
+                width: 60,
+                borderRadius: '40px',
+                backgroundColor: '#815ae6',
+                color: 'white',
+                border: 'none',
+                outline: 'none',
+                cursor: 'pointer',
+                marginRight: 5
+            }} onClick={() => {
+                setShowMenu(!showMenu)
+            }}><IoIosMenu style={{
+                color: 'white',
+                fontSize: '1.2rem',
+            }} /></button>}
+        </div>
     </div>
 }

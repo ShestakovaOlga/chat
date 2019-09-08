@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useGlobal } from 'reactn';
 import { Chat } from './Chat';
-import { Users, CreateGroup } from '../server';
-import { Contact } from './Contact'
+import { Users, CreateGroup, getChats } from '../server';
+import { Contact } from './Contact';
+
 
 
 
@@ -34,11 +35,21 @@ export function SelectContacts(props) {
 
         {selected.length >= 2 && <input onChange={(e) => {
             setChatname(e.target.value)
-        }} type="text" name="" id="" placeholder='Escribe el nombre del grupo' value={chatname} />}
+        }} style={{
+            padding: 5,
+            height: 30,
+            outline: 'none',
+            margin: '20px 10px',
+            border: 'none',
+            borderBottom: '1px solid #815ae6',
+            fontSize: '1rem'
+        }} type="text" name="" id="" placeholder='Escribe el nombre del grupo...' value={chatname} />}
 
         <button disabled={disabled} onClick={() => {
-            CreateGroup(chatname === '' ? users.find((user) => user.email === selected[0]).name : chatname.name, selected)
+            CreateGroup(chatname === '' ? users.find((user) => user.email === selected[0]).name : chatname, selected)
             setShowContacts(false)
+
+
         }} style={{
             padding: 4,
             cursor: 'pointer',
@@ -49,7 +60,7 @@ export function SelectContacts(props) {
             outline: 'none',
             fontSize: '0.8rem',
             fontFamily: "'Lexend Deca', sans-serif",
-            margin: '10px 70px'
+            margin: '20px 70px'
         }}>Create group</button>
 
         <div style={{

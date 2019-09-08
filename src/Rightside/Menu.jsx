@@ -6,7 +6,7 @@ import { IoIosMenu } from "react-icons/io";
 
 export function Menu(props) {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
-    const [w] = useGlobal('w')
+    const [mode] = useGlobal('mode')
 
     return <div style={{
         display: 'flex',
@@ -35,7 +35,7 @@ export function Menu(props) {
         </div>
 
         <div>
-            {w >= 1000 && <button style={{
+            {['tablet', 'phone'].includes(mode) && <button style={{
                 padding: '1px',
                 width: 30,
                 borderRadius: '40px',

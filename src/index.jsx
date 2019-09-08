@@ -14,14 +14,25 @@ setGlobal({
     showMenu: false,
     showGroups: true,
     showMessage: false,
-    w: window.innerWidth
+    w: window.innerWidth,
+    mode: 'pc'
 })
-
-window.addEventListener('resize', () => {
+onresize()
+window.addEventListener('resize', onresize)
+function onresize() {
+    const w = window.innerWidth
+    let mode = ''
+    if (w > 1200) {
+        mode = 'pc'
+    } else if (w > 760) {
+        mode = 'tablet'
+    } else {
+        mode = 'phone'
+    }
     setGlobal({
-        w: window.innerWidth
+        mode
     })
-})
+}
 
 setInterval(async () => {
     const g = getGlobal()

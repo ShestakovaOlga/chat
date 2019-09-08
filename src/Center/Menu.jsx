@@ -4,10 +4,11 @@ import { IoIosMenu } from "react-icons/io";
 import { useReducer } from 'react';
 
 
+
 export function Menu(props) {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
     const [showGroups, setshowGroups] = useGlobal('showGroups')
-    const [w] = useGlobal('w')
+    const [mode] = useGlobal('mode')
     const [activeChat, setActiveChat] = useGlobal('activeChat')
     const [chats] = useGlobal('chats')
 
@@ -35,23 +36,6 @@ export function Menu(props) {
             </div>
         </div>
 
-        <div>
-            {w >= 1000 && <button style={{
-                padding: '1px 4px',
-                width: 60,
-                borderRadius: '40px',
-                backgroundColor: '#815ae6',
-                color: 'white',
-                border: 'none',
-                outline: 'none',
-                cursor: 'pointer',
-                marginRight: 5
-            }} onClick={() => {
-                setShowMenu(!showMenu)
-            }}><IoIosMenu style={{
-                color: 'white',
-                fontSize: '1.2rem',
-            }} />{showMenu}</button>}
-        </div>
+
     </div>
 }

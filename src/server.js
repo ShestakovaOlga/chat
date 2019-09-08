@@ -134,6 +134,7 @@ export async function CreateGroup(name, members) { //crear un grupo
             }
         })
         console.log('chat was created');
+        getChats()
 
     } catch (er) {
         console.log(er);

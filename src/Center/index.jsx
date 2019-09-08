@@ -13,7 +13,6 @@ export function Center() {
     const [activeChat, setActiveChat] = useGlobal('activeChat')
     const [chats] = useGlobal('chats')
     const scroll = useRef(null)
-    const [w, setW] = useState(window.innerWidth)
     const [showMessage, setShowMessage] = useGlobal('showMessage')
 
     //Hacer scroll hacia abajo en los mensajes
@@ -22,22 +21,10 @@ export function Center() {
     }, [messages])
 
 
-
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            setW(window.innerWidth)
-        })
-        return () => {
-            window.removeEventListener('resize', () => {
-                setW(window.innerWidth)
-            })
-        }
-    }, [])
-
     return <div style={{
         display: 'flex',
         flexDirection: 'column',
-        flex: 1,
+        flex: 3,
         width: '100%',
         height: '100%',
         backgroundColor: '#FFFFFF',
