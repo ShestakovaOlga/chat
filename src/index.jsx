@@ -15,7 +15,8 @@ setGlobal({
     showGroups: true,
     showMessage: false,
     w: window.innerWidth,
-    mode: 'pc'
+    mode: 'pc',
+    me: null
 })
 onresize()
 window.addEventListener('resize', onresize)

@@ -160,3 +160,23 @@ export async function getChats() {  //traerse los chats
     }
 }
 
+
+export async function getMe() {  //traerse 
+    const res = await fetch(`${host}/me`, {
+        credentials: "include",
+        headers: {
+            origin: window.location.host
+        }
+    })
+    try {
+        const me = await res.json()
+        console.log({ me });
+        setGlobal({
+            me
+        })
+    } catch (e) {
+        console.log(e);
+
+    }
+}
+

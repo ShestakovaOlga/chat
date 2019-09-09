@@ -1,12 +1,21 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosMenu } from "react-icons/io";
+import { getMe } from '../server';
 
 
 
 export function Menu(props) {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
     const [mode] = useGlobal('mode')
+    const [me] = useGlobal('me')
+    useEffect(() => {
+        getMe()
+    }, [])
+
+    if (!me) {
+        return null
+    }
 
     return <div style={{
         display: 'flex',
@@ -30,7 +39,7 @@ export function Menu(props) {
                 color: 'white',
             }} />
             <div>
-                <span>Nombre del usuario</span>
+                <span>{me.name}</span>
             </div>
         </div>
 

@@ -9,7 +9,7 @@ export function Menu(props) {
         justifyContent: 'space-between',
         flexDirection: showContacts ? 'row' : 'row-reverse',
         height: 50,
-        border: '1px solid #F4F4F5'
+        border: '1px solid #F4F4F5',
     }}>
         {showContacts && <button onClick={() => {
             setShowContacts(false)

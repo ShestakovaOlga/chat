@@ -26,10 +26,11 @@ export function Menu(props) {
         }}>
             {mode === 'phone' && <button style={{
                 color: '#2e0696',
-                fontSize: '1.5rem',
-                marginRight: 20,
+                fontSize: '1.2rem',
+                marginRight: 10,
                 outline: 'none',
-                backgroundColor: 'white'
+                backgroundColor: 'white',
+                border: 'none'
             }}
                 onClick={() => {
                     setActiveChat(false)
