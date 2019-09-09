@@ -85,7 +85,7 @@ export function Center() {
                     if (e.key == 'Enter' && !e.shiftKey) {
                         setMessages([
                             ...messages,
-                            { text, date: new Date() }
+                            { text, date: new Date().toLocaleString() }
                         ])
                         sendMessage(text, activeChat)
                         setText('')
@@ -107,7 +107,7 @@ export function Center() {
             <button disabled={!activeChat} onClick={() => {
                 setMessages([
                     ...messages,
-                    { text, date: new Date() }
+                    { text, date: new Date().toLocaleString() }
                 ])
                 sendMessage(text, activeChat)
                 setText('')
