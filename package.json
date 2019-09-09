@@ -8,7 +8,14 @@
     "react-router-dom": "^5.0.1",
     "reactn": "^2.2.2"
   },
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /dist"
+  },
   "browserslist": [
     "last 2 Chrome versions"
-  ]
+  ],
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  }
 }

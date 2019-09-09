@@ -1,17 +1,10 @@
 {
-    "name": "inWork",
+    "name": "inwork",
     "version": 2,
-    "alias": "chat.galax.be",
     "builds": [
         {
             "src": "dist/*",
             "use": "@now/static"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/dist"
         }
     ]
 }
