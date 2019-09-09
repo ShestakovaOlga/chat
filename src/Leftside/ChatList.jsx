@@ -16,6 +16,6 @@ export function ChatList(props) {
         height: '100%',
         overflowY: 'scroll',
     }}>
-        {chats.map((chat) => <Chat chat={chat} />)}
+        {chats.map((chat) => <Chat key={chat.ID} chat={chat} />)}
     </div>
 }

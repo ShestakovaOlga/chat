@@ -1,6 +1,6 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
-import { IoIosMenu } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 import { useReducer } from 'react';
 
 
@@ -24,6 +24,17 @@ export function Menu(props) {
             display: 'flex',
             alignItems: 'center',
         }}>
+            {mode === 'phone' && <button style={{
+                color: '#2e0696',
+                fontSize: '1.5rem',
+                marginRight: 20,
+                outline: 'none',
+                backgroundColor: 'white'
+            }}
+                onClick={() => {
+                    setActiveChat(false)
+                }}><IoIosArrowBack /></button>}
+
             <IoMdPerson style={{
                 width: 50,
                 height: 50,

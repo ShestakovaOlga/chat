@@ -10,15 +10,18 @@ function Login(props) {
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
     const [logged] = useGlobal('logged')
+    const [mode] = useGlobal('mode')
     useEffect(() => {
         Checklogin()
     }, [])
-    if (logged) {
-        props.history.push('/dashboard')
-    }
+    useEffect(() => {
+        if (logged) {
+            props.history.push('/dashboard')
+        }
+    }, [logged])
+
 
     return <div style={{
-        border: '1px solid green',
         width: '50%',
         height: '100vw',
         display: 'flex',
@@ -26,12 +29,18 @@ function Login(props) {
         alignItems: 'center',
         fontFamily: "'Muli', sans-serif",
         color: 'gray',
+        ...['tablet', 'phone'].includes(mode) ? {
+            width: '100%',
+        } : {},
     }}>
 
         <div style={{
             width: '400px',
             display: 'flex',
             flexDirection: 'column',
+            ...['tablet', 'phone'].includes(mode) ? {
+                width: '300px',
+            } : {},
         }}>
             <div style={{
                 display: 'flex',
@@ -59,7 +68,7 @@ function Login(props) {
                     fontFamily: "'Muli', sans-serif",
                     fontSize: '1rem'
                 }}
-                    type="email" name="" id="" value={mail} />
+                    type="email" value={mail} />
                 <label htmlFor="">Password</label>
                 <input onChange={(e) => {
                     setPassword(e.target.value)
@@ -72,7 +81,7 @@ function Login(props) {
                     backgroundColor: 'white',
                     fontFamily: "'Muli', sans-serif",
                     fontSize: '1rem'
-                }} type="password" name="" id="" value={password} />
+                }} type="password" value={password} />
                 <InputGroup.Prepend>
                     <label htmlFor="">
                         <InputGroup.Checkbox aria-label="Checkbox for following text input" />
@@ -86,12 +95,15 @@ function Login(props) {
                     width: 200,
                     borderRadius: '40px',
                     border: 'none',
-                    backgroundColor: '#815ae6',
+                    backgroundColor: '#2e0696 ',
                     color: 'white',
                     outline: 'none',
                     fontSize: '1rem',
                     margin: '20px 0 20px 200px',
                     fontFamily: "'Lexend Deca', sans-serif",
+                    ...['tablet', 'phone'].includes(mode) ? {
+                        width: 100,
+                    } : {},
                 }} variant="primary" type="submit">
                     Log in
                 </Button>

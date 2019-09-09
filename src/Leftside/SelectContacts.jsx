@@ -43,7 +43,7 @@ export function SelectContacts(props) {
             border: 'none',
             borderBottom: '1px solid #815ae6',
             fontSize: '1rem'
-        }} type="text" name="" id="" placeholder='Escribe el nombre del grupo...' value={chatname} />}
+        }} type="text" name="" id="" placeholder='Nombre del grupo' value={chatname} />}
 
         <button disabled={disabled} onClick={() => {
             CreateGroup(chatname === '' ? users.find((user) => user.email === selected[0]).name : chatname, selected)
@@ -55,19 +55,19 @@ export function SelectContacts(props) {
             cursor: 'pointer',
             borderRadius: '40px',
             border: 'none',
-            backgroundColor: disabled ? 'gray' : '#815ae6',
+            backgroundColor: disabled ? 'gray' : '#2e0696',
             color: 'white',
             outline: 'none',
             fontSize: '0.8rem',
             fontFamily: "'Lexend Deca', sans-serif",
-            margin: '20px 70px'
+            margin: '20px 20px'
         }}>Create group</button>
 
         <div style={{
             height: '100%',
             overflowY: 'scroll'
         }}>
-            {users.map((user) => <Contact onChange={(e) => {
+            {users.map((user) => <Contact key={user.ID} onChange={(e) => {
                 if (e.target.checked) {
                     setSelected([
                         ...selected,

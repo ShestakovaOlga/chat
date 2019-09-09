@@ -23,7 +23,7 @@ function Dashboard(props) {
         }}>
             <MainLeft />
             <Center />
-            {/* <InfoPanel /> */}
+            {showMenu && <InfoPanel />}
         </div>
     }
     if (mode === 'phone') {

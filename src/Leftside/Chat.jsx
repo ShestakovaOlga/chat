@@ -50,7 +50,7 @@ export function Chat({ chat }) {
             </div>
 
             <div style={{
-                color: '#815ae6',
+                color: '#2e0696',
                 fontSize: '1.2rem',
             }}><IoIosArrowForward /></div>
         </div>

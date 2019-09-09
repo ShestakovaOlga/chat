@@ -8,9 +8,9 @@ function Signup(props) {
     const [fullname, setFullname] = useState('')
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
+    const [mode] = useGlobal('mode')
 
     return <div style={{
-        border: '1px solid green',
         width: '50vw',
         height: '100vh',
         display: 'flex',
@@ -18,11 +18,17 @@ function Signup(props) {
         alignItems: 'center',
         fontFamily: "'Muli', sans-serif",
         color: 'gray',
+        ...['tablet', 'phone'].includes(mode) ? {
+            width: '100%',
+        } : {},
     }}>
         <div style={{
             width: '400px',
             display: 'flex',
             flexDirection: 'column',
+            ...['tablet', 'phone'].includes(mode) ? {
+                width: '300px',
+            } : {},
         }}>
             <div style={{
                 display: 'flex',
@@ -83,13 +89,16 @@ function Signup(props) {
                     padding: 6,
                     width: 200,
                     borderRadius: '40px',
-                    backgroundColor: '#815ae6',
+                    backgroundColor: '#2e0696',
                     color: 'white',
                     border: 'none',
                     outline: 'none',
                     fontSize: '1rem',
                     margin: '20px 0 20px 200px',
                     fontFamily: "'Lexend Deca', sans-serif",
+                    ...['tablet', 'phone'].includes(mode) ? {
+                        width: 100,
+                    } : {},
                 }} variant="primary" type="submit">
                     Sign up
                 </Button>

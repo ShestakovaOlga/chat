@@ -12,8 +12,8 @@ export function Menu(props) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        border: '1px solid #E1E1E8',
-        backgroundColor: 'white',
+        backgroundColor: '#2e0696',
+        color: 'white',
         width: '100%',
         boxSizing: 'border-box'
 
@@ -27,7 +27,7 @@ export function Menu(props) {
                 width: 50,
                 height: 50,
                 marginRight: 5,
-                color: '#815ae6',
+                color: 'white',
             }} />
             <div>
                 <span>Nombre del usuario</span>

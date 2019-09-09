@@ -115,10 +115,10 @@ export function Center() {
                 width: 100,
                 height: 70,
                 border: 'none',
-                color: '#815ae6',
+                color: '#2e0696',
                 outline: 'none',
                 fontSize: '2rem',
-                marginRight: 15
+                backgroundColor: 'white'
             }} type="submit">  <IoIosPaperPlane /></button>
 
         </div>

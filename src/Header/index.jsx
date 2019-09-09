@@ -12,7 +12,10 @@ export function Header() {
         alignItems: 'center',
         justifyContent: 'space-between',
     }}>
-        <img src="" alt="WorkLine" />
+        <div style={{ fontSize: '2rem', }}>
+            <span >in</span><span style={{ color: '#2e0696' }}>Work</span>
+        </div>
+
 
 
         <div style={{
@@ -25,7 +28,7 @@ export function Header() {
                 padding: 4,
                 width: 80,
                 borderRadius: '40px',
-                backgroundColor: '#815ae6',
+                backgroundColor: '#2e0696',
                 color: 'white',
                 border: 'none',
                 outline: 'none',
@@ -38,7 +41,7 @@ export function Header() {
                 padding: '1px 4px',
                 width: 60,
                 borderRadius: '40px',
-                backgroundColor: '#815ae6',
+                backgroundColor: '#2e0696',
                 color: 'white',
                 border: 'none',
                 outline: 'none',
