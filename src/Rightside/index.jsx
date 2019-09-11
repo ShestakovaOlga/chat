@@ -6,10 +6,11 @@ import { Selectimg } from './Selectimg'
 export function InfoPanel() {
     const [mode] = useGlobal('mode')
     const [img, setImg] = useState(null)
+    const [showSelectimg, setShowSelectimg] = useGlobal('showSelectimg')
     return <div style={{
         flex: 1,
         height: '100%',
-        backgroundColor: '#2e0696',
+        backgroundColor: '#815ae6',
         // background: 'linear-gradient(to right bottom #815ae6, #543698)',
         color: 'white',
         ...mode === 'phone' ? {
@@ -28,9 +29,10 @@ export function InfoPanel() {
     }}>
 
         <Menu />
-        <CalendarZone />
-        <Selectimg onChange={(i) => {
+        {showSelectimg ? <Selectimg onChange={(i) => {
             setImg(i)
-        }} value={img} />
+        }} value={img} /> : false}
+        <CalendarZone />
+
     </div >
 }

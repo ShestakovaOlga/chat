@@ -1,6 +1,6 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
-import { IoIosMenu } from "react-icons/io";
+import { IoMdCreate } from "react-icons/io";
 import { getMe } from '../server';
 
 
@@ -9,6 +9,7 @@ export function Menu(props) {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
     const [mode] = useGlobal('mode')
     const [me] = useGlobal('me')
+    const [showSelectimg, setShowSelectimg] = useGlobal('showSelectimg')
 
     useEffect(() => {
         getMe()
@@ -22,8 +23,8 @@ export function Menu(props) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: '#2e0696',
-        color: 'white',
+        backgroundColor: 'white',
+        color: '#815ae6',
         width: '100%',
         boxSizing: 'border-box'
 
@@ -33,11 +34,22 @@ export function Menu(props) {
             display: 'flex',
             alignItems: 'center',
         }}>
-            <IoMdPerson style={{
+            <IoMdCreate style={{
+                color: 'black',
+                position: 'relative',
+                left: 45,
+                top: 10,
+                fontSize: '1.2rem'
+            }} />
+            <IoMdPerson onClick={() => {
+                setShowSelectimg(!showSelectimg)
+                console.log(showSelectimg);
+
+            }} style={{
                 width: 50,
                 height: 50,
                 marginRight: 5,
-                color: 'white',
+                color: '#815ae6',
             }} />
             <div>
                 <span>{me.name}</span>

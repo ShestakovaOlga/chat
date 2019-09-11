@@ -1,22 +1,55 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useGlobal } from 'reactn'
+import '../css/style'
+import { IoIosCloudDownload, IoIosCloseCircleOutline } from "react-icons/io";
 
 
 
 export function Selectimg({ onChange, value }) {
+    const disabled = !value
     return <div style={{
-        width: 200,
-        height: 200,
+        display: 'flex',
+        flexDirection: 'column',
+        width: 350,
+        height: 150,
         backgroundColor: 'white',
-        boxShadow: '3px 10px 29px -6px gray',
+        padding: '15px 5px'
     }}>
-        <input onChange={(e) => {
-            const fr = new FileReader();
-            fr.onload = function () {
-                onChange(fr.result)
-            }
-            fr.readAsDataURL(e.target.files[0]);
-        }} type="file" name="photo" id="img-select" />
+        <div>
+            <label htmlFor="imgselect" className='imgstyle'>
+                <IoIosCloudDownload className='iconoDescargar' /> Seleccionar la foto
+        </label>
+            <input onChange={(e) => {
+                const fr = new FileReader();
+                fr.onload = function () {
+                    onChange(fr.result)
+                }
+                fr.readAsDataURL(e.target.files[0]);
+            }} type="file" name="photo" id="imgselect" />
 
-        {value && <img src={value} alt="" />}
+            {value && <img style={{
+                width: 80,
+                height: 80,
+            }} src={value} alt="" />}
+            <button disabled={disabled} style={{
+                position: 'absolute',
+                border: 'none',
+                outline: 'none',
+                fontSize: '1.2rem',
+                color: disabled ? 'white' : '#2e0696',
+                backgroundColor: 'transparent'
+            }}><IoIosCloseCircleOutline /></button>
+        </div>
+        <button disabled={disabled} style={{
+            padding: 4,
+            cursor: 'pointer',
+            borderRadius: '40px',
+            border: 'none',
+            backgroundColor: disabled ? 'gray' : '#2e0696',
+            color: 'white',
+            outline: 'none',
+            fontSize: '0.8rem',
+            fontFamily: "'Lexend Deca', sans-serif",
+            margin: '5px 20px'
+        }}>Guardar</button>
     </div>
 }

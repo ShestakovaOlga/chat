@@ -112,7 +112,7 @@ function Login(props) {
                         <Link to='/signup' style={{
                         color: '#815ae6',
                         textDecoration: 'none',
-                    }} >Sing up</Link>
+                    }} >Sign up</Link>
 
                 </span>
             </div>
