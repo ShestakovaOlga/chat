@@ -23,7 +23,7 @@ export async function getMessages(ID) {
 }
 
 
-export async function sendSignup(name, email, password) { //registrarse
+export async function sendSignup(name, email, password, avatar) { //registrarse
     try {
         await fetch(`${host}/newuser`, {
             credentials: "include",
@@ -31,7 +31,8 @@ export async function sendSignup(name, email, password) { //registrarse
             body: JSON.stringify({
                 name,
                 email,
-                password
+                password,
+                avatar
             }),
             headers: {
                 'Content-type': 'application/json',
@@ -145,7 +146,8 @@ export async function getChats() {  //traerse los chats
     const res = await fetch(`${host}/chats`, {
         credentials: "include",
         headers: {
-            origin: window.location.host
+            origin: window.location.host,
+            'Content-Type': 'application/json'
         }
     })
     try {

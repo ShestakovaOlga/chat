@@ -1,9 +1,11 @@
 import React, { useState, useGlobal } from 'reactn';
-import { Menu } from './Menu'
-
+import { Menu } from './Menu';
+import { CalendarZone } from './Calendar';
+import { Selectimg } from './Selectimg'
 
 export function InfoPanel() {
     const [mode] = useGlobal('mode')
+    const [img, setImg] = useState(null)
     return <div style={{
         flex: 1,
         height: '100%',
@@ -26,6 +28,9 @@ export function InfoPanel() {
     }}>
 
         <Menu />
-        Info Panel
-</div >
+        <CalendarZone />
+        <Selectimg onChange={(i) => {
+            setImg(i)
+        }} value={img} />
+    </div >
 }

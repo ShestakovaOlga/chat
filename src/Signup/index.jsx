@@ -2,12 +2,13 @@ import React, { useState, useGlobal } from 'reactn';
 import { Button } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { sendSignup, Login } from '../server';
-
+import { Selectimg } from '../Rightside/Selectimg'
 
 function Signup(props) {
     const [fullname, setFullname] = useState('')
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
+    const [img, setImg] = useState(null)
     const [mode] = useGlobal('mode')
 
     return <div style={{
@@ -54,7 +55,7 @@ function Signup(props) {
                     fontFamily: "'Muli', sans-serif",
                     fontSize: '1rem'
                 }}
-                    type="username" name="" id="" value={fullname} />
+                    type="username" value={fullname} />
                 <label htmlFor="">Email address</label>
                 <input onChange={(e) => { setMail(e.target.value) }} style={{
                     margin: '15px 0',
@@ -66,7 +67,7 @@ function Signup(props) {
                     fontFamily: "'Muli', sans-serif",
                     fontSize: '1rem'
                 }}
-                    type="email" name="" id="" value={mail} />
+                    type="email" value={mail} />
                 <label htmlFor="">Create password</label>
                 <input onChange={(e) => { setPassword(e.target.value) }} style={{
                     margin: '15px 0',
@@ -78,6 +79,10 @@ function Signup(props) {
                     fontFamily: "'Muli', sans-serif",
                     fontSize: '1rem'
                 }} type="password" name="" id="" value={password} />
+
+                <Selectimg onChange={(i) => {
+                    setImg(i)
+                }} value={img} />
 
                 <Button onClick={() => {
                     sendSignup(fullname, mail, password)

@@ -9,6 +9,7 @@ export function Menu(props) {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
     const [mode] = useGlobal('mode')
     const [me] = useGlobal('me')
+
     useEffect(() => {
         getMe()
     }, [])
