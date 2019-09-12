@@ -26,8 +26,8 @@ export function Menu(props) {
         backgroundColor: 'white',
         color: '#815ae6',
         width: '100%',
-        boxSizing: 'border-box'
-
+        boxSizing: 'border-box',
+        borderBottom: '1px solid #2e0696'
     }}>
 
         <div style={{
@@ -39,7 +39,8 @@ export function Menu(props) {
                 position: 'relative',
                 left: 45,
                 top: 10,
-                fontSize: '1.2rem'
+                fontSize: '1.2rem',
+                cursor: 'pointer'
             }} />
             <IoMdPerson onClick={() => {
                 setShowSelectimg(!showSelectimg)
@@ -50,6 +51,7 @@ export function Menu(props) {
                 height: 50,
                 marginRight: 5,
                 color: '#815ae6',
+                cursor: 'pointer'
             }} />
             <div>
                 <span>{me.name}</span>

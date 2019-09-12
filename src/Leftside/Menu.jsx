@@ -14,7 +14,7 @@ export function Menu(props) {
         {showContacts && <button onClick={() => {
             setShowContacts(false)
         }} style={{
-            color: '#2e0696',
+            color: '#815ae6',
             fontSize: '1.2rem',
             backgroundColor: '#FFFFFF',
             cursor: 'pointer',
@@ -26,7 +26,7 @@ export function Menu(props) {
             setShowContacts(true)
         }}
             style={{
-                color: '#2e0696',
+                color: '#815ae6',
                 fontSize: '1.2rem',
                 backgroundColor: '#FFFFFF',
                 cursor: 'pointer',

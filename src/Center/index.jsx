@@ -115,7 +115,7 @@ export function Center() {
                 width: 100,
                 height: 70,
                 border: 'none',
-                color: '#2e0696',
+                color: '#815ae6',
                 outline: 'none',
                 fontSize: '2rem',
                 backgroundColor: 'white'

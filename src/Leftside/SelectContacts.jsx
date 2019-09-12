@@ -55,7 +55,7 @@ export function SelectContacts(props) {
             cursor: 'pointer',
             borderRadius: '40px',
             border: 'none',
-            backgroundColor: disabled ? 'gray' : '#2e0696',
+            backgroundColor: disabled ? 'gray' : '#815ae6',
             color: 'white',
             outline: 'none',
             fontSize: '0.8rem',

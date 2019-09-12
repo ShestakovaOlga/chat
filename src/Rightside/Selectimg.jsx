@@ -9,7 +9,7 @@ export function Selectimg({ onChange, value }) {
     return <div style={{
         display: 'flex',
         flexDirection: 'column',
-        width: 350,
+        width: '100%',
         height: 150,
         backgroundColor: 'white',
         padding: '15px 5px'
@@ -35,7 +35,7 @@ export function Selectimg({ onChange, value }) {
                 border: 'none',
                 outline: 'none',
                 fontSize: '1.2rem',
-                color: disabled ? 'white' : '#2e0696',
+                color: disabled ? 'white' : '#815ae6',
                 backgroundColor: 'transparent'
             }}><IoIosCloseCircleOutline /></button>
         </div>
@@ -44,7 +44,7 @@ export function Selectimg({ onChange, value }) {
             cursor: 'pointer',
             borderRadius: '40px',
             border: 'none',
-            backgroundColor: disabled ? 'gray' : '#2e0696',
+            backgroundColor: disabled ? 'gray' : '#815ae6',
             color: 'white',
             outline: 'none',
             fontSize: '0.8rem',

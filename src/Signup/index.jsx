@@ -2,7 +2,8 @@ import React, { useState, useGlobal } from 'reactn';
 import { Button } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { sendSignup, Login } from '../server';
-import { Selectimg } from '../Rightside/Selectimg'
+import { Selectimg } from '../Rightside/Selectimg';
+
 
 function Signup(props) {
     const [fullname, setFullname] = useState('')
@@ -94,7 +95,7 @@ function Signup(props) {
                     padding: 6,
                     width: 200,
                     borderRadius: '40px',
-                    backgroundColor: '#2e0696',
+                    backgroundColor: '#815ae6',
                     color: 'white',
                     border: 'none',
                     outline: 'none',

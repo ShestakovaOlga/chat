@@ -146,7 +146,7 @@ export async function getChats() {  //traerse los chats
     const res = await fetch(`${host}/chats`, {
         credentials: "include",
         headers: {
-            origin: window.location.host,
+            origin: window.location.protocol + '//' + window.location.host,
             'Content-Type': 'application/json'
         }
     })

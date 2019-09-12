@@ -95,7 +95,7 @@ function Login(props) {
                     width: 200,
                     borderRadius: '40px',
                     border: 'none',
-                    backgroundColor: '#2e0696 ',
+                    backgroundColor: '#815ae6 ',
                     color: 'white',
                     outline: 'none',
                     fontSize: '1rem',

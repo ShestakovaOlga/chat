@@ -5,7 +5,7 @@ input[type="file" i] {
  .imgstyle {
         font-size: 1rem;
         width: 150px;
-        color:#2e0696;
+        color:#815ae6;
         background-color: white;
         display: inline-block;
         transition: all .5s;
@@ -14,8 +14,16 @@ input[type="file" i] {
         padding: 5px;
         }
 .iconoDescargar{
-    color:#2e0696; 
+    color:#815ae6; 
     font-size: 1.5rem;
     text-align: center;
     cursor: pointer;
+        }
+
+ .react-calendar {
+            width: 100% !important;
+            background: white;
+            border: 1px solid #a0a096;
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 1rem;
         }
