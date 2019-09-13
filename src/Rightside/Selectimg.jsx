@@ -29,14 +29,7 @@ export function Selectimg({ onChange, value }) {
                 width: 80,
                 height: 80,
             }} src={value} alt="" />}
-            <button disabled={disabled} style={{
-                position: 'absolute',
-                border: 'none',
-                outline: 'none',
-                fontSize: '1.2rem',
-                color: disabled ? 'white' : '#815ae6',
-                backgroundColor: 'transparent'
-            }}><IoIosCloseCircleOutline /></button>
+
         </div>
         <button disabled={disabled} style={{
             padding: 4,

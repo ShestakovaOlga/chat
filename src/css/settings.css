@@ -1,0 +1,11 @@
+label{
+    margin:20px 0 5px 0;
+}
+input{
+    outline: none;
+    padding: 5px;
+    font-size: 1rem;
+    width: 100%;
+    border-style:none;
+    border-bottom:1px solid #815ae6;
+}

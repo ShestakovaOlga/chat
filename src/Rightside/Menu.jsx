@@ -29,7 +29,6 @@ export function Menu(props) {
         width: '100%',
         marginBottom: 20,
         boxSizing: 'border-box',
-        borderTop: '1px solid #2e0696'
     }}>
 
         <div style={{
