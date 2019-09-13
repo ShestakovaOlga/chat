@@ -17,7 +17,8 @@ setGlobal({
     w: window.innerWidth,
     mode: 'pc',
     me: null,
-    showSelectimg: false
+    showSelectimg: false,
+    showSettings: false
 })
 onresize()
 window.addEventListener('resize', onresize)

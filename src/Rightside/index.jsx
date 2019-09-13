@@ -2,11 +2,17 @@ import React, { useState, useGlobal } from 'reactn';
 import { Menu } from './Menu';
 import { CalendarZone } from './Calendar';
 import { Selectimg } from './Selectimg'
+import { Settings } from '../Components/Settings'
 
 export function InfoPanel() {
     const [mode] = useGlobal('mode')
     const [img, setImg] = useState(null)
     const [showSelectimg, setShowSelectimg] = useGlobal('showSelectimg')
+    const [showSettings, setShowSettings] = useGlobal('showSettings')
+
+    if (showSettings) {
+        return <Settings />
+    }
     return <div style={{
         flex: 1,
         height: '100%',
@@ -27,12 +33,10 @@ export function InfoPanel() {
             bottom: 0,
         } : {}
     }}>
-
         <Menu />
         {showSelectimg ? <Selectimg onChange={(i) => {
             setImg(i)
         }} value={img} /> : false}
         <CalendarZone />
-
     </div >
 }

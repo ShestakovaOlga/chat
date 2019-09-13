@@ -86,7 +86,7 @@ function Signup(props) {
                 }} value={img} />
 
                 <Button onClick={() => {
-                    sendSignup(fullname, mail, password)
+                    sendSignup(fullname, mail, password, avatar)
                     props.history.push('/')
                     setFullname('')
                     setMail('')

@@ -163,7 +163,7 @@ export async function getChats() {  //traerse los chats
 }
 
 
-export async function getMe() {  //traerse 
+export async function getMe() {  //traer los datos del usuario
     const res = await fetch(`${host}/me`, {
         credentials: "include",
         headers: {
@@ -182,3 +182,22 @@ export async function getMe() {  //traerse
     }
 }
 
+export async function avatar(avatar) { //mandar avatar
+    try {
+        await fetch(`${host}/avatar`, {
+            credentials: "include",
+            method: 'POST',
+            body: JSON.stringify({
+                avatar
+            }),
+            headers: {
+                'Content-type': 'application/json',
+                origin: window.location.host
+            }
+        })
+        console.log('avatar was send');
+
+    } catch (er) {
+        console.log(er);
+    }
+}

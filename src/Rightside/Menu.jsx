@@ -1,6 +1,6 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
-import { IoMdCreate } from "react-icons/io";
+import { IoMdCreate, IoMdSettings } from "react-icons/io";
 import { getMe } from '../server';
 
 
@@ -10,6 +10,7 @@ export function Menu(props) {
     const [mode] = useGlobal('mode')
     const [me] = useGlobal('me')
     const [showSelectimg, setShowSelectimg] = useGlobal('showSelectimg')
+    const [showSettings, setShowSettings] = useGlobal('showSettings')
 
     useEffect(() => {
         getMe()
@@ -26,13 +27,15 @@ export function Menu(props) {
         backgroundColor: 'white',
         color: '#815ae6',
         width: '100%',
+        marginBottom: 20,
         boxSizing: 'border-box',
-        borderBottom: '1px solid #2e0696'
+        borderTop: '1px solid #2e0696'
     }}>
 
         <div style={{
             display: 'flex',
             alignItems: 'center',
+            width: '100%',
         }}>
             <IoMdCreate style={{
                 color: 'black',
@@ -53,9 +56,24 @@ export function Menu(props) {
                 color: '#815ae6',
                 cursor: 'pointer'
             }} />
-            <div>
+            <div style={{ flex: 1 }}>
                 <span>{me.name}</span>
             </div>
+            <button onClick={() => {
+                setShowSettings(!showSettings)
+                console.log(showSettings);
+
+            }} style={{
+                padding: 4,
+                borderRadius: '40px',
+                backgroundColor: 'white',
+                color: '#815ae6',
+                border: 'none',
+                outline: 'none',
+                fontSize: '1.5rem',
+                margin: '10px 10px',
+                cursor: 'pointer',
+            }}><IoMdSettings />{showSettings}</button>
         </div>
 
         <div>

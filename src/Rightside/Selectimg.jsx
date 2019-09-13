@@ -10,7 +10,6 @@ export function Selectimg({ onChange, value }) {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        height: 150,
         backgroundColor: 'white',
         padding: '15px 5px'
     }}>
