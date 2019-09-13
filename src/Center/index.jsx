@@ -7,7 +7,7 @@ import { Menu } from './Menu'
 
 
 
-export function Center() {
+export function Center(props) {
     const [messages, setMessages] = useGlobal('messages')
     const [text, setText] = useState('')
     const [activeChat, setActiveChat] = useGlobal('activeChat')

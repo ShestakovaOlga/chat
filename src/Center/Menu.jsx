@@ -12,6 +12,10 @@ export function Menu(props) {
     const [activeChat, setActiveChat] = useGlobal('activeChat')
     const [chats] = useGlobal('chats')
 
+    if (!chats.find((chat) => chat.ID == activeChat)) {
+        return null
+    }
+
     return <div style={{
         display: 'flex',
         alignItems: 'center',
@@ -36,12 +40,17 @@ export function Menu(props) {
                     setActiveChat(false)
                 }}><IoIosArrowBack /></button>}
 
-            <IoMdPerson style={{
+            {chats.find((chat) => chat.ID == activeChat).avatar ? <div style={{
                 width: 50,
                 height: 50,
                 marginRight: 5,
                 color: '#815ae6',
-            }} />
+            }}><img style={{ width: '100%', height: '100%' }} src={chats.find((chat) => chat.ID == activeChat).avatar} alt="" /></div> : <IoMdPerson style={{
+                width: 50,
+                height: 50,
+                marginRight: 5,
+                color: '#815ae6',
+            }} />}
             <div>
                 <span>{activeChat && chats.find((chat) => chat.ID == activeChat).name}</span>
                 <div>Date</div>

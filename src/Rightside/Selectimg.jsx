@@ -31,7 +31,7 @@ export function Selectimg({ onChange, value }) {
             }} src={value} alt="" />}
 
         </div>
-        <button disabled={disabled} style={{
+        {/* <button disabled={disabled} style={{
             padding: 4,
             cursor: 'pointer',
             borderRadius: '40px',
@@ -42,6 +42,6 @@ export function Selectimg({ onChange, value }) {
             fontSize: '0.8rem',
             fontFamily: "'Lexend Deca', sans-serif",
             margin: '5px 20px'
-        }}>Guardar</button>
+        }}>Guardar</button> */}
     </div>
 }

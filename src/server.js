@@ -1,6 +1,7 @@
 import { setGlobal } from 'reactn'
 
 const host = 'https://chat.galax.be'
+//const host = 'http://192.168.1.10:8081'
 
 export function sendMessage(message, ID) {  //mandar los mensajes
     fetch(`${host}/newmessage?id=${ID}`, {

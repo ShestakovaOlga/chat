@@ -32,13 +32,13 @@ export function Settings(props) {
             alignItems: 'center',
         }}>
             <label htmlFor="">Cambiar el nombre</label>
-            <input type="text" placeholder="Nombre" />
+            <input type="text" id='inputS' placeholder="Nombre" />
 
             <label htmlFor="">Cambiar el email</label>
-            <input type="email" placeholder="Email" />
+            <input type="email" id='inputS' placeholder="Email" />
 
             <label htmlFor="">Nombre de la empresa</label>
-            <input type="text" placeholder="Empresa" />
+            <input type="text" id='inputS' placeholder="Empresa" />
             <button style={{
                 padding: 4,
                 cursor: 'pointer',
@@ -57,9 +57,9 @@ export function Settings(props) {
             }} value={img} />
 
             <span style={{ margin: '50px 0 15px 0' }}>Cambiar la contraseña</span>
-            <input type="password" name="" id="" placeholder="Nueva contraseña" />
-            <input type="password" name="" id="" placeholder="Confirmar nueva contraseña" />
-            <input type="password" name="" id="" placeholder="Antigua contraseña" />
+            <input type="password" name="" id='inputS' placeholder="Nueva contraseña" />
+            <input type="password" name="" id='inputS' placeholder="Confirmar nueva contraseña" />
+            <input type="password" name="" id='inputS' placeholder="Antigua contraseña" />
         </div>
         <button style={{
             padding: 6,

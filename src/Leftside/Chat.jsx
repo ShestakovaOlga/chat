@@ -2,6 +2,7 @@ import React, { useGlobal } from 'reactn';
 import { getMessages } from '../server';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { userInfo } from 'os';
 
 
 export function Chat({ chat }) {
@@ -29,12 +30,17 @@ export function Chat({ chat }) {
             cursor: 'pointer',
             padding: 5,
 
-        }}><IoMdPerson style={{
-            width: 30,
-            height: 30,
-            marginRight: 5,
-            color: activeChat == chat.ID ? 'white' : '#815ae6',
-        }} />
+        }}>
+            {chat.avatar ? <div style={{
+                width: 30,
+                height: 30,
+                marginRight: 5,
+            }}><img style={{ width: '100%', height: '100%' }} src={chat.avatar} alt="" /></div> : <IoMdPerson style={{
+                width: 30,
+                height: 30,
+                marginRight: 5,
+                color: activeChat == chat.ID ? 'white' : '#815ae6',
+            }} />}
 
             <div style={{
                 display: 'flex',

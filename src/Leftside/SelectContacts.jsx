@@ -76,7 +76,7 @@ export function SelectContacts(props) {
                 } else {
                     setSelected(selected.filter(email => email !== user.email))
                 }
-            }} checked={selected.includes(user.email)} name={user.name} />)}
+            }} checked={selected.includes(user.email)} {...user} />)}
         </div>
 
 

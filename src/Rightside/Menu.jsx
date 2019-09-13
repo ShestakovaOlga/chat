@@ -42,9 +42,21 @@ export function Menu(props) {
                 left: 45,
                 top: 10,
                 fontSize: '1.2rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                pointerEvents: 'none'
             }} />
-            <IoMdPerson onClick={() => {
+            {me.avatar ? <div onClick={() => {
+                setShowSelectimg(!showSelectimg)
+                console.log(showSelectimg);
+            }} style={{
+                width: 50,
+                height: 50,
+                marginRight: 5,
+                color: '#815ae6',
+                cursor: 'pointer'
+            }}>
+                <img style={{ width: '100%', height: '100%' }} src={me.avatar} alt="" />
+            </div> : <IoMdPerson onClick={() => {
                 setShowSelectimg(!showSelectimg)
                 console.log(showSelectimg);
 
@@ -54,7 +66,7 @@ export function Menu(props) {
                 marginRight: 5,
                 color: '#815ae6',
                 cursor: 'pointer'
-            }} />
+            }} />}
             <div style={{ flex: 1 }}>
                 <span>{me.name}</span>
             </div>
