@@ -99,6 +99,7 @@ function Login(props) {
                     color: 'white',
                     outline: 'none',
                     fontSize: '1rem',
+                    cursor: 'pointer',
                     margin: '20px 0 20px 200px',
                     fontFamily: "'Lexend Deca', sans-serif",
                     ...['tablet', 'phone'].includes(mode) ? {

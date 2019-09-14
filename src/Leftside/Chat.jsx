@@ -2,7 +2,7 @@ import React, { useGlobal } from 'reactn';
 import { getMessages } from '../server';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { userInfo } from 'os';
+
 
 
 export function Chat({ chat }) {
