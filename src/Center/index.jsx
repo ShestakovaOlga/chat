@@ -51,12 +51,16 @@ export function Center(props) {
                     display: 'flex',
                     alignItems: 'center',
                 }}>
-                    <IoMdPerson style={{
+                    {chat.avatar ? <div style={{
+                        width: 45,
+                        height: 50,
+                        marginRight: 5,
+                    }}><img styel={{ width: '100%', height: '100%' }} src={chat.avatar} alt="" /></div> : <IoMdPerson style={{
                         width: 30,
                         height: 30,
                         marginRight: 5,
                         color: '#815ae6',
-                    }} />
+                    }} />}
                     <div style={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -100,9 +104,10 @@ export function Center(props) {
                     padding: 5,
                     boxSizing: 'border-box',
                     resize: 'none',
-                    border: 'none',
+                    border: '1px solid gray',
                     fontSize: '1rem',
-                    marginLeft: 10
+                    marginLeft: 10,
+                    backgroundColor: 'white',
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
             <button disabled={!activeChat} onClick={() => {
                 setMessages([

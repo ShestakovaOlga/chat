@@ -48,27 +48,24 @@ export async function sendSignup(name, email, password, avatar) { //registrarse
 }
 
 export async function login(email, password) { //abrir la sesion
-    try {
-        const res = await fetch(`${host}/login`, {
-            credentials: "include",
-            method: 'POST',
-            body: JSON.stringify({
-                email,
-                password
-            }),
-            headers: {
-                'Content-type': 'application/json',
-                origin: window.location.host
-            }
-        })
-        if (res.ok) {
-            setGlobal({
-                logged: true
-            })
+    const ids = await OneSignal.getIdsAvailable()
+    const res = await fetch(`${host}/login`, {
+        credentials: "include",
+        method: 'POST',
+        body: JSON.stringify({
+            email,
+            password,
+            pushToken: ids.userId
+        }),
+        headers: {
+            'Content-type': 'application/json',
+            origin: window.location.host
         }
-
-    } catch (er) {
-        return false
+    })
+    if (res.ok) {
+        setGlobal({
+            logged: true
+        })
     }
 }
 
@@ -202,3 +199,5 @@ export async function avatar(avatar) { //mandar avatar
         console.log(er);
     }
 }
+
+
