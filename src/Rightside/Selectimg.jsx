@@ -1,6 +1,6 @@
 import React, { useGlobal } from 'reactn'
 import '../css/style'
-import { IoIosCloudDownload, IoIosCloseCircleOutline } from "react-icons/io";
+import { IoIosCloudDownload, IoIosCamera } from "react-icons/io";
 import { avatar } from '../server'
 
 

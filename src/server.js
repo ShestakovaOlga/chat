@@ -48,7 +48,13 @@ export async function sendSignup(name, email, password, avatar) { //registrarse
 }
 
 export async function login(email, password) { //abrir la sesion
-    const ids = await OneSignal.getIdsAvailable()
+    let ids = {}
+    try {
+        ids = await OneSignal.getIdsAvailable()
+    } catch (e) {
+        console.log(e);
+
+    }
     const res = await fetch(`${host}/login`, {
         credentials: "include",
         method: 'POST',

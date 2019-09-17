@@ -23,7 +23,12 @@
             display: none;
         }
     </style>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+</head>
+
+<body>
+    <div id='app'></div>
+    <script src="/index.jsx"></script>
+    <script async src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
     <script>
         let OneSignal = window.OneSignal || [];
         OneSignal.push(function () {
@@ -32,11 +37,6 @@
             });
         });
     </script>
-</head>
-
-<body>
-    <div id='app'></div>
-    <script src="/index.jsx"></script>
 </body>
 
 </html>

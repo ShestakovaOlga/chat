@@ -6,6 +6,8 @@ import { Selectimg } from '../Rightside/Selectimg'
 export function Settings(props) {
     const [showSettings, setShowSettings] = useGlobal('showSettings')
     const [img, setImg] = useState(null)
+    const [mode] = useGlobal('mode')
+
     return <div style={{
         display: 'flex',
         flexDirection: 'column',
@@ -14,6 +16,22 @@ export function Settings(props) {
         flex: 1,
         fontFamily: "'Roboto', sans-serif",
         overflowY: 'scroll',
+        margin: '10px 0px',
+        ...mode === 'phone' ? {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+        } : {},
+        ...mode === 'tablet' ? {
+            position: 'absolute',
+            width: window.innerWidth / 4 * 3,
+            height: '100%',
+            right: -11,
+            bottom: 0,
+            margin: '-5px 0px',
+        } : {}
     }}>
         <button style={{
             color: '#2e0696',
@@ -39,11 +57,11 @@ export function Settings(props) {
 
             <label htmlFor="">Nombre de la empresa</label>
             <input type="text" id='inputS' placeholder="Empresa" />
-            <button style={{
+            {<button style={{
                 padding: 4,
                 cursor: 'pointer',
                 borderRadius: '40px',
-                width: '100%',
+                width: '90%',
                 border: 'none',
                 backgroundColor: '#815ae6',
                 color: 'white',
@@ -51,7 +69,7 @@ export function Settings(props) {
                 fontSize: '1rem',
                 fontFamily: "'Lexend Deca', sans-serif",
                 margin: '20px 30px'
-            }}>Guardar los cambios</button>
+            }}>Guardar los cambios</button>}
             <Selectimg onChange={(i) => {
                 setImg(i)
             }} value={img} />
@@ -61,7 +79,7 @@ export function Settings(props) {
             <input type="password" name="" id='inputS' placeholder="Confirmar nueva contraseña" />
             <input type="password" name="" id='inputS' placeholder="Antigua contraseña" />
         </div>
-        <button style={{
+        {<button style={{
             padding: 6,
             cursor: 'pointer',
             borderRadius: '40px',
@@ -72,6 +90,6 @@ export function Settings(props) {
             fontSize: '1rem',
             fontFamily: "'Lexend Deca', sans-serif",
             margin: '30px 20px'
-        }}>Guardar nueva contraseña</button>
+        }}>Guardar nueva contraseña</button>}
     </div>
 }

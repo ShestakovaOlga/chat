@@ -1,4 +1,4 @@
-import React, { useGlobal } from 'reactn';
+import React, { useGlobal, useState } from 'reactn';
 import { Logout } from '../server';
 import { IoMdSettings } from "react-icons/io";
 import { IoIosMenu } from "react-icons/io";
@@ -6,6 +6,8 @@ import { IoIosMenu } from "react-icons/io";
 export function Header() {
     const [mode] = useGlobal('mode')
     const [showMenu, setShowMenu] = useGlobal('showMenu')
+    const [logged] = useGlobal('logged')
+
     return <div style={{
         width: '100%',
         display: 'flex',
@@ -15,14 +17,11 @@ export function Header() {
         <div style={{ fontSize: '2rem', }}>
             <span >in</span><span style={{ color: '#2e0696' }}>Work</span>
         </div>
-
-
-
         <div style={{
             display: 'flex',
             alignItems: 'center',
         }}>
-            <button onClick={() => {
+            {logged && <button onClick={() => {
                 Logout()
             }} style={{
                 padding: 4,
@@ -36,7 +35,7 @@ export function Header() {
                 margin: '10px 20px',
                 fontFamily: "'Lexend Deca', sans-serif",
                 cursor: 'pointer',
-            }}>Log out</button>
+            }}>Log out</button>}
             {['tablet', 'phone'].includes(mode) && <button style={{
                 padding: '1px 4px',
                 width: 60,

@@ -28,16 +28,14 @@ export function Chat({ chat }) {
             color: activeChat == chat.ID ? 'white' : 'black',
             borderBottom: '1px solid #E1E1E8 ',
             cursor: 'pointer',
-            padding: 5,
-
         }}>
             {chat.avatar ? <div style={{
-                width: 40,
-                height: 45,
+                width: 50,
+                height: 55,
                 marginRight: 5,
             }}><img style={{ width: '100%', height: '100%' }} src={chat.avatar} alt="" /></div> : <IoMdPerson style={{
-                width: 30,
-                height: 30,
+                width: 50,
+                height: 50,
                 marginRight: 5,
                 color: activeChat == chat.ID ? 'white' : '#815ae6',
             }} />}
@@ -46,6 +44,7 @@ export function Chat({ chat }) {
                 display: 'flex',
                 flexDirection: 'column',
                 flexGrow: 1,
+                padding: 5,
             }}>{chat.name}
 
                 <div style={{

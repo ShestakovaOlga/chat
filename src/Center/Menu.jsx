@@ -41,7 +41,7 @@ export function Menu(props) {
                 }}><IoIosArrowBack /></button>}
 
             {chats.find((chat) => chat.ID == activeChat).avatar ? <div style={{
-                width: 45,
+                width: 43,
                 height: 50,
                 marginRight: 5,
                 color: '#815ae6',

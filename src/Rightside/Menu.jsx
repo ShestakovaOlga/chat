@@ -1,6 +1,6 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
-import { IoMdCreate, IoMdSettings } from "react-icons/io";
+import { IoIosCloseCircle, IoMdSettings, IoIosCamera } from "react-icons/io";
 import { getMe } from '../server';
 
 
@@ -36,12 +36,12 @@ export function Menu(props) {
             alignItems: 'center',
             width: '100%',
         }}>
-            <IoMdCreate style={{
-                color: 'black',
+            <IoIosCamera style={{
+                color: 'white',
                 position: 'relative',
-                left: 45,
-                top: 10,
-                fontSize: '1.2rem',
+                left: 44,
+                top: 15,
+                fontSize: '1rem',
                 cursor: 'pointer',
                 pointerEvents: 'none'
             }} />
@@ -49,7 +49,7 @@ export function Menu(props) {
                 setShowSelectimg(!showSelectimg)
                 console.log(showSelectimg);
             }} style={{
-                width: 50,
+                width: 47,
                 height: 50,
                 marginRight: 5,
                 color: '#815ae6',
@@ -82,25 +82,25 @@ export function Menu(props) {
                 border: 'none',
                 outline: 'none',
                 fontSize: '1.5rem',
-                margin: '10px 10px',
+                margin: '10px 5px',
                 cursor: 'pointer',
             }}><IoMdSettings />{showSettings}</button>
         </div>
 
         <div>
             {['tablet', 'phone'].includes(mode) && <button style={{
-                padding: '1px',
-                width: 30,
+                padding: 4,
                 borderRadius: '40px',
-                backgroundColor: '#815ae6',
-                color: 'white',
+                backgroundColor: 'white',
+                color: '#815ae6',
                 border: 'none',
                 outline: 'none',
+                fontSize: '1.5rem',
+                margin: '10px 5px',
                 cursor: 'pointer',
-                marginRight: 10
             }} onClick={() => {
                 setShowMenu(!showMenu)
-            }}>X{showMenu}</button>}
+            }}><IoIosCloseCircle />{showMenu}</button>}
         </div>
     </div>
 }

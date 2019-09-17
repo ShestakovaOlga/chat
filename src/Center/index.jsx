@@ -44,18 +44,18 @@ export function Center(props) {
             {messages.sort((a, b) => {
                 return a.date > b.date
             }).map((message) => <div key={message.text + message.date} style={{
-                margin: '10px 10px',
+                margin: '10px 0px',
                 padding: 2
             }}>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
                 }}>
-                    {chat.avatar ? <div style={{
-                        width: 45,
-                        height: 50,
+                    {chats.find((chat) => chat.ID == activeChat).avatar ? <div style={{
+                        width: 40,
+                        height: 45,
                         marginRight: 5,
-                    }}><img styel={{ width: '100%', height: '100%' }} src={chat.avatar} alt="" /></div> : <IoMdPerson style={{
+                    }}><img style={{ width: '100%', height: '100%' }} src={chats.find((chat) => chat.ID == activeChat).avatar} alt="" /></div> : <IoMdPerson style={{
                         width: 30,
                         height: 30,
                         marginRight: 5,
@@ -99,13 +99,13 @@ export function Center(props) {
                 }}
                 style={{
                     flexGrow: 1,
-                    height: 70,
                     outline: 'none',
-                    padding: 5,
+                    padding: 10,
                     boxSizing: 'border-box',
                     resize: 'none',
-                    border: '1px solid gray',
-                    fontSize: '1rem',
+                    border: '1px solid #BDC3C7',
+                    borderRadius: 20,
+                    fontSize: '0.8rem',
                     marginLeft: 10,
                     backgroundColor: 'white',
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
