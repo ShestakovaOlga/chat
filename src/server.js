@@ -42,7 +42,7 @@ export async function getMessages(ID) {
 
 export async function sendSignup(name, email, password, avatar) { //registrarse
     socket.send(JSON.stringify({
-        command: 'signup',
+        command: 'newuser',
         payload: {
             name,
             email,
@@ -74,14 +74,13 @@ export async function sendSignup(name, email, password, avatar) { //registrarse
 
 
 export async function Logout() {  //cerrar la sesion
-    socket.send(JSON.stringify({
-        command: 'logout',
-    }));
+    localStorage.removeItem('token')
+    window.location.reload()
 }
 
 export async function CreateGroup(name, members) { //crear un grupo
     socket.send(JSON.stringify({
-        command: 'name',
+        command: 'newchat',
         payload: {
             name: name,
             members: members
