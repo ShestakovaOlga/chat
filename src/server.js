@@ -1,53 +1,145 @@
 import { setGlobal } from 'reactn'
+import { async } from 'q';
 
-const host = 'https://chat.galax.be'
-//const host = 'http://192.168.1.10:8081'
+//const host = 'https://chat.galax.be'
+const host = 'http://192.168.1.10:8081'
 
 export function sendMessage(message, ID) {  //mandar los mensajes
-    fetch(`${host}/newmessage?id=${ID}`, {
-        credentials: "include",
-        method: 'POST',
-        body: JSON.stringify({
-            text: message,
-        }),
-        headers: {
-            'Content-type': 'application/json',
-            origin: window.location.host
+    socket.send(JSON.stringify({
+        command: 'messages',
+        payload: {
+            message,
+            ID
         }
-    })
+    }));
+    // fetch(`${host}/newmessage?id=${ID}`, {
+    //     credentials: "include",
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //         text: message,
+    //     }),
+    //     headers: {
+    //         'Content-type': 'application/json',
+    //         origin: window.location.host
+    //     }
+    // })
+}
+export function Users() {
+    socket.send(JSON.stringify({
+        command: 'users'
+    }));
 }
 
 export async function getMessages(ID) {
-    const res = await fetch(`${host}/messages?id=${ID}`, { credentials: "include", origin: window.location.host })
+    const res = await fetch(`${host}/messages?id=${ID}`, {
+        credentials: "include",
+        origin: window.location.host
+    })
     const data = await res.json()
     if (data) setGlobal({ messages: data })
 }
 
 
 export async function sendSignup(name, email, password, avatar) { //registrarse
-    try {
-        await fetch(`${host}/newuser`, {
-            credentials: "include",
-            method: 'POST',
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-                avatar
-            }),
-            headers: {
-                'Content-type': 'application/json',
-                origin: window.location.host
-            }
-        })
-        console.log('user was created');
+    socket.send(JSON.stringify({
+        command: 'signup',
+        payload: {
+            name,
+            email,
+            password,
+            avatar
+        }
+    }));
+    // try {
+    //     await fetch(`${host}/newuser`, {
+    //         credentials: "include",
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             name,
+    //             email,
+    //             password,
+    //             avatar
+    //         }),
+    //         headers: {
+    //             'Content-type': 'application/json',
+    //             origin: window.location.host
+    //         }
+    //     })
+    //     console.log('user was created');
 
-    } catch (er) {
-        console.log(er);
-    }
+    // } catch (er) {
+    //     console.log(er);
+    // }
 }
 
-export async function login(email, password) { //abrir la sesion
+
+export async function Logout() {  //cerrar la sesion
+    socket.send(JSON.stringify({
+        command: 'logout',
+    }));
+}
+
+export async function CreateGroup(name, members) { //crear un grupo
+    socket.send(JSON.stringify({
+        command: 'name',
+        payload: {
+            name: name,
+            members: members
+        }
+    }));
+    // try {
+    //     await fetch(`${host}/newchat`, {
+    //         credentials: "include",
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             name: name,
+    //             members: members
+    //         }),
+    //         headers: {
+    //             'Content-type': 'application/json',
+    //             origin: window.location.host
+    //         }
+    //     })
+    //     console.log('chat was created');
+    //     getChats()
+
+    // } catch (er) {
+    //     console.log(er);
+    // }
+}
+
+export async function getChats() {  //traerse los chats
+    socket.send(JSON.stringify({
+        command: 'chats',
+    }));
+}
+
+
+export async function getMe() {  //traer los datos del usuario
+    socket.send(JSON.stringify({
+        command: 'me',
+    }));
+}
+
+export async function avatar(avatar) { //mandar avatar
+    socket.send(JSON.stringify({
+        command: 'avatar',
+        payload: {
+            avatar
+        }
+    }));
+}
+
+
+const ws = 'ws://192.168.1.10:8081/ws'
+//const ws = 'wss://chat.galax.be/ws'
+
+
+// Crea una nueva conexión.
+const socket = new WebSocket(ws);
+
+// Abre la conexión
+socket.addEventListener('open', async function (event) {
     let ids = {}
     try {
         ids = await OneSignal.getIdsAvailable()
@@ -55,155 +147,58 @@ export async function login(email, password) { //abrir la sesion
         console.log(e);
 
     }
-    const res = await fetch(`${host}/login`, {
-        credentials: "include",
-        method: 'POST',
-        body: JSON.stringify({
-            email,
-            password,
-            pushToken: ids.userId
-        }),
-        headers: {
-            'Content-type': 'application/json',
-            origin: window.location.host
+    socket.send(JSON.stringify({
+        command: 'jwt',
+        payload: {
+            token: localStorage.getItem('token')
         }
-    })
-    if (res.ok) {
-        setGlobal({
-            logged: true
-        })
+    }));
+    // socket.send(JSON.stringify({
+    //     command: 'login',
+    //     payload: {
+    //         email: 'olga@olga.com',
+    //         password: 'olga',
+    //         pushToken: ids.userId
+    //     }
+    // }));
+});
+
+// Escucha por mensajes
+socket.addEventListener('message', function (event) {
+    console.log('Message from server', event.data);
+    gotServerMessage(JSON.parse(event.data))
+});
+
+function gotServerMessage(msg) {    //servidor manda los mensajes
+    switch (msg.command) {
+        case 'jwt': console.log('jwt', msg.payload);
+            localStorage.setItem('token', msg.payload.token)
+            break;
+        case 'users': console.log('users', msg.payload);
+            setGlobal({
+                users: msg.payload.users
+            })
+            break;
+        case 'check': console.log('check', msg.payload);
+            setGlobal({
+                logged: true
+            })
+            break;
+        case 'me':
+            setGlobal({
+                me: msg.payload.me
+            })
+            break;
+        case 'chats':
+            setGlobal({
+                chats: msg.payload.chats
+            })
+            break;
+        case 'logout':
+            setGlobal({
+                logged: false
+            })
+            break;
     }
 }
-
-
-export async function Checklogin() {  //mantener la sesion abierta
-    const res = await fetch(`${host}/logged`, {
-        credentials: "include",
-        headers: {
-            origin: window.location.host
-        }
-    })
-
-    if (res.ok) {
-        setGlobal({
-            logged: true
-        })
-    }
-
-}
-
-
-export async function Logout() {  //cerrar la sesion
-    const res = await fetch(`${host}/logout`, {
-        credentials: "include",
-        headers: {
-            origin: window.location.host
-        }
-    })
-    if (res.ok) {
-        setGlobal({
-            logged: false
-        })
-    }
-}
-
-
-export async function Users() {  //los usuarios 
-    const res = await fetch(`${host}/users`, {
-        credentials: "include",
-        headers: {
-            origin: window.location.host
-        }
-    })
-    const users = await res.json()
-    console.log({ users });
-
-    setGlobal({
-        users
-    })
-}
-
-
-export async function CreateGroup(name, members) { //crear un grupo
-    try {
-        await fetch(`${host}/newchat`, {
-            credentials: "include",
-            method: 'POST',
-            body: JSON.stringify({
-                name: name,
-                members: members
-            }),
-            headers: {
-                'Content-type': 'application/json',
-                origin: window.location.host
-            }
-        })
-        console.log('chat was created');
-        getChats()
-
-    } catch (er) {
-        console.log(er);
-    }
-}
-
-export async function getChats() {  //traerse los chats
-    const res = await fetch(`${host}/chats`, {
-        credentials: "include",
-        headers: {
-            origin: window.location.protocol + '//' + window.location.host,
-            'Content-Type': 'application/json'
-        }
-    })
-    try {
-        const chats = await res.json()
-        console.log({ chats });
-        setGlobal({
-            chats
-        })
-    } catch (e) {
-        console.log(e);
-
-    }
-}
-
-
-export async function getMe() {  //traer los datos del usuario
-    const res = await fetch(`${host}/me`, {
-        credentials: "include",
-        headers: {
-            origin: window.location.host
-        }
-    })
-    try {
-        const me = await res.json()
-        console.log({ me });
-        setGlobal({
-            me
-        })
-    } catch (e) {
-        console.log(e);
-
-    }
-}
-
-export async function avatar(avatar) { //mandar avatar
-    try {
-        await fetch(`${host}/avatar`, {
-            credentials: "include",
-            method: 'POST',
-            body: JSON.stringify({
-                avatar
-            }),
-            headers: {
-                'Content-type': 'application/json',
-                origin: window.location.host
-            }
-        })
-        console.log('avatar was send');
-
-    } catch (er) {
-        console.log(er);
-    }
-}
-
 

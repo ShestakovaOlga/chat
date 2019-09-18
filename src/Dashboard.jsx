@@ -1,8 +1,7 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { MainLeft } from './Leftside/index';
-import { Center } from './Center'
-import { InfoPanel } from './Rightside/index'
-import { Checklogin } from './server';
+import { Center } from './Center';
+import { InfoPanel } from './Rightside/index';
 import { withRouter } from 'react-router-dom';
 
 
@@ -13,7 +12,6 @@ function Dashboard(props) {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
 
     if (!logged) {
-        Checklogin()
         props.history.push('/')
     }
     if (mode === 'tablet') {

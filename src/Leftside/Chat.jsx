@@ -31,7 +31,7 @@ export function Chat({ chat }) {
         }}>
             {chat.avatar ? <div style={{
                 width: 50,
-                height: 55,
+                height: 60,
                 marginRight: 5,
             }}><img style={{ width: '100%', height: '100%' }} src={chat.avatar} alt="" /></div> : <IoMdPerson style={{
                 width: 50,

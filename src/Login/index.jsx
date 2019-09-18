@@ -2,7 +2,6 @@ import React, { useState, useEffect, useGlobal } from 'reactn';
 import { Button } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
-import { Checklogin } from '../server';
 import { login } from '../server'
 
 
@@ -11,9 +10,6 @@ function Login(props) {
     const [password, setPassword] = useState('')
     const [logged] = useGlobal('logged')
     const [mode] = useGlobal('mode')
-    useEffect(() => {
-        Checklogin()
-    }, [])
     useEffect(() => {
         if (logged) {
             props.history.push('/dashboard')
