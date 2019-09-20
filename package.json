@@ -10,6 +10,7 @@
     "react-router-dom": "^5.0.1",
     "reactn": "^2.2.2",
     "rect": "^1.2.1",
+    "sweetalert": "^2.1.2",
     "sweetalert2": "^8.17.1",
     "sweetalert2-react-content": "^1.1.0"
   },

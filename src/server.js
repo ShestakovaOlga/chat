@@ -1,15 +1,19 @@
 import { setGlobal } from 'reactn'
 import { async } from 'q';
+import swal from 'sweetalert';
+
 
 //const host = 'https://chat.galax.be'
 const host = 'http://192.168.1.10:8081'
 
-export function sendMessage(message, ID) {  //mandar los mensajes
+
+//mandar un mensaje nuevo
+export function sendMessage(message, ID) {
     socket.send(JSON.stringify({
-        command: 'messages',
+        command: 'newmessage',
         payload: {
-            message,
-            ID
+            text: message,
+            chatID: ID
         }
     }));
     // fetch(`${host}/newmessage?id=${ID}`, {
@@ -24,29 +28,56 @@ export function sendMessage(message, ID) {  //mandar los mensajes
     //     }
     // })
 }
+
+//sacar los contactos
 export function Users() {
     socket.send(JSON.stringify({
         command: 'users'
     }));
 }
 
+//recebir mensajes
 export async function getMessages(ID) {
-    const res = await fetch(`${host}/messages?id=${ID}`, {
-        credentials: "include",
-        origin: window.location.host
-    })
-    const data = await res.json()
-    if (data) setGlobal({ messages: data })
+    socket.send(JSON.stringify({
+        command: 'messages',
+        payload: {
+            ID
+        }
+    }));
+    // const res = await fetch(`${host}/messages?id=${ID}`, {
+    //     credentials: "include",
+    //     origin: window.location.host
+    // })
+    // const data = await res.json()
+    // if (data) setGlobal({ messages: data })
 }
 
+//iniciar sesion
+export async function login(email, password) {
+    let ids = {}
+    try {
+        ids = await OneSignal.getIdsAvailable()
+    } catch (e) {
+        console.log(e);
+    }
+    socket.send(JSON.stringify({
+        command: 'login',
+        payload: {
+            email: email,
+            password: password,
+            pushToken: ids.userId
+        }
+    }));
+}
 
-export async function sendSignup(name, email, password, avatar) { //registrarse
+//registrarse
+export async function sendSignup(name, email, password, avatar) {
     socket.send(JSON.stringify({
         command: 'newuser',
         payload: {
-            name,
-            email,
-            password,
+            name: name,
+            email: email,
+            password: password,
             avatar
         }
     }));
@@ -139,13 +170,6 @@ const socket = new WebSocket(ws);
 
 // Abre la conexión
 socket.addEventListener('open', async function (event) {
-    let ids = {}
-    try {
-        ids = await OneSignal.getIdsAvailable()
-    } catch (e) {
-        console.log(e);
-
-    }
     socket.send(JSON.stringify({
         command: 'jwt',
         payload: {
@@ -197,6 +221,13 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
             setGlobal({
                 logged: false
             })
+            break;
+        case 'notification':
+            swal(msg.payload.msg, '', msg.payload.isError ? "error" : "success");
+            // msg.payload.isError
+            break;
+        case 'messages':
+            setGlobal({ messages: msg.payload.messages })
             break;
     }
 }

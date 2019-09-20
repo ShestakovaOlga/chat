@@ -37,12 +37,6 @@ function onresize() {
     })
 }
 
-setInterval(async () => {
-    const g = getGlobal()
-    if (g.activeChat) {
-        getMessages(g.activeChat)
-    }
-}, 5000)
 
 function App() {
     return <div>
