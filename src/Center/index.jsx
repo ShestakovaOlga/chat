@@ -8,17 +8,18 @@ import { Menu } from './Menu'
 
 
 export function Center(props) {
-    const [messages, setMessages] = useGlobal('messages')
     const [text, setText] = useState('')
     const [activeChat, setActiveChat] = useGlobal('activeChat')
     const [chats] = useGlobal('chats')
     const scroll = useRef(null)
     const [showMessage, setShowMessage] = useGlobal('showMessage')
+    const [users] = useGlobal('users')
+    const [me] = useGlobal('me')
 
     //Hacer scroll hacia abajo en los mensajes
     useEffect(() => {
         scroll.current.scrollTo(0, scroll.current.scrollHeight)
-    }, [messages])
+    }, [chats])
 
 
     return <div style={{
@@ -41,7 +42,7 @@ export function Center(props) {
             overflowY: 'scroll',
 
         }}>
-            {messages.sort((a, b) => {
+            {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.sort((a, b) => {
                 return a.date > b.date
             }).map((message) => <div key={message.text + message.date} style={{
                 margin: '10px 0px',
@@ -51,11 +52,11 @@ export function Center(props) {
                     display: 'flex',
                     alignItems: 'center',
                 }}>
-                    {chats.find((chat) => chat.ID == activeChat).avatar ? <div style={{
+                    {[...users, me].find((u) => u.ID == message.author) ? <div style={{
                         width: 40,
                         height: 45,
                         marginRight: 5,
-                    }}><img style={{ width: '100%', height: '100%' }} src={chats.find((chat) => chat.ID == activeChat).avatar} alt="" /></div> : <IoMdPerson style={{
+                    }}><img style={{ width: '100%', height: '100%' }} src={[...users, me].find((u) => u.ID == message.author).avatar} alt="" /></div> : <IoMdPerson style={{
                         width: 30,
                         height: 30,
                         marginRight: 5,
@@ -64,7 +65,6 @@ export function Center(props) {
                     <div style={{
                         display: 'flex',
                         flexDirection: 'column',
-
                     }}>
                         {getUsername(chats, activeChat, message)}
                         <div style={{ fontSize: '0.8rem', color: '#797D7F', }}>{new Date(message.CreatedAt).toLocaleString()}</div>
@@ -87,10 +87,6 @@ export function Center(props) {
             <textarea disabled={!activeChat} onChange={(e) => { setText(e.target.value) }}
                 onKeyPress={(e) => {
                     if (e.key == 'Enter' && !e.shiftKey) {
-                        setMessages([
-                            ...messages,
-                            { text, date: new Date().toLocaleString() }
-                        ])
                         sendMessage(text, activeChat)
                         setText('')
                         e.preventDefault();
@@ -110,10 +106,6 @@ export function Center(props) {
                     backgroundColor: 'white',
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
             <button disabled={!activeChat} onClick={() => {
-                setMessages([
-                    ...messages,
-                    { text, date: new Date().toLocaleString() }
-                ])
                 sendMessage(text, activeChat)
                 setText('')
             }} style={{

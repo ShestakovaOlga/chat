@@ -2,7 +2,7 @@ import { Container } from './Container';
 import React, { useState, setGlobal, getGlobal } from 'reactn';
 import { render } from "react-dom";
 import { HashRouter } from 'react-router-dom';
-import { getMessages } from './server'
+
 
 setGlobal({
     logged: false,

@@ -1,5 +1,5 @@
 import React, { useEffect, useGlobal } from 'reactn';
-import { GetChats, getMessages } from '../server';
+import { GetChats } from '../server';
 import { Menu } from './Menu';
 import { SelectContacts } from './SelectContacts';
 import { ChatList } from './ChatList'

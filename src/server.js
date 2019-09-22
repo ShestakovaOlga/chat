@@ -1,4 +1,4 @@
-import { setGlobal } from 'reactn'
+import { setGlobal, getGlobal } from 'reactn'
 import swal from 'sweetalert';
 
 
@@ -32,29 +32,26 @@ export function Users() {
 }
 
 //recebir mensajes
-export async function getMessages(ID) {
-    socket.send(JSON.stringify({
-        command: 'messages',
-        payload: {
-            ID
-        }
-    }));
-    // const res = await fetch(`${host}/messages?id=${ID}`, {
-    //     credentials: "include",
-    //     origin: window.location.host
-    // })
-    // const data = await res.json()
-    // if (data) setGlobal({ messages: data })
-}
+// export async function getMessages(ID) {
+//     socket.send(JSON.stringify({
+//         command: 'messages',
+//         payload: {
+//             ID
+//         }
+//     }));
+// const res = await fetch(`${host}/messages?id=${ID}`, {
+//     credentials: "include",
+//     origin: window.location.host
+// })
+// const data = await res.json()
+// if (data) setGlobal({ messages: data })
+//}
 
 //iniciar sesion
 export async function login(email, password) {
+    console.log('login');
+
     let ids = {}
-    try {
-        ids = await OneSignal.getIdsAvailable()
-    } catch (e) {
-        console.log(e);
-    }
     socket.send(JSON.stringify({
         command: 'login',
         payload: {
@@ -63,6 +60,16 @@ export async function login(email, password) {
             pushToken: ids.userId
         }
     }));
+    console.log('after socket send');
+
+    // try {
+    //     ids = await OneSignal.getUserId()
+    // } catch (e) {
+    //     console.log(e);
+    // }
+    // console.log('after ids');
+
+
 }
 
 //registrarse
@@ -206,11 +213,12 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
             })
             break;
         case 'me':
+            console.log('me', msg.payload.me);
             setGlobal({
                 me: msg.payload.me
             })
             break;
-        case 'chats':
+        case 'chats': console.log('chats', msg.payload.chats);
             setGlobal({
                 chats: msg.payload.chats
             })
@@ -224,8 +232,15 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
             swal(msg.payload.msg, '', msg.payload.isError ? "error" : "success");
             // msg.payload.isError
             break;
-        case 'messages':
-            setGlobal({ messages: msg.payload.messages })
+        case 'message':
+            const g = getGlobal()
+            const chat = g.chats.find(chat => chat.ID === msg.payload.message.chatID)
+            if (chat) {
+                chat.Messages.push(msg.payload.message)
+            }
+            setGlobal({
+                chats: [...g.chats.filter(chat => chat.ID !== msg.payload.message.chatID), chat]
+            })
             break;
     }
 }

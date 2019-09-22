@@ -1,5 +1,4 @@
 import React, { useGlobal } from 'reactn';
-import { getMessages } from '../server';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -20,7 +19,6 @@ export function Chat({ chat }) {
     }}>
         <div onClick={() => {
             setActiveChat(chat.ID)
-            getMessages(chat.ID)
         }} style={{
             display: 'flex',
             alignItems: 'center',
