@@ -3,8 +3,8 @@ import { async } from 'q';
 import swal from 'sweetalert';
 
 
-//const host = 'https://chat.galax.be'
-const host = 'http://192.168.1.10:8081'
+const host = 'https://chat.galax.be'
+//const host = 'http://192.168.1.10:8081'
 
 
 //mandar un mensaje nuevo
