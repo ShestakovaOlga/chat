@@ -191,6 +191,9 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
     switch (msg.command) {
         case 'jwt': console.log('jwt', msg.payload);
             localStorage.setItem('token', msg.payload.token)
+            setGlobal({
+                logged: true
+            })
             break;
         case 'users': console.log('users', msg.payload);
             setGlobal({
