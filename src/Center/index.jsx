@@ -3,7 +3,8 @@ import { IoIosPaperPlane } from "react-icons/io";
 import { sendMessage } from '../server';
 import { useEffect } from 'react';
 import { IoMdPerson } from "react-icons/io";
-import { Menu } from './Menu'
+import { Menu } from './Menu';
+
 
 
 
@@ -15,6 +16,7 @@ export function Center(props) {
     const [showMessage, setShowMessage] = useGlobal('showMessage')
     const [users] = useGlobal('users')
     const [me] = useGlobal('me')
+    const [mode] = useGlobal('mode')
 
     //Hacer scroll hacia abajo en los mensajes
     useEffect(() => {
@@ -104,6 +106,9 @@ export function Center(props) {
                     fontSize: '0.8rem',
                     marginLeft: 10,
                     backgroundColor: 'white',
+                    ...mode === 'phone' ? {
+                        height: '20px'
+                    } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
             <button disabled={!activeChat} onClick={() => {
                 sendMessage(text, activeChat)
@@ -115,7 +120,10 @@ export function Center(props) {
                 color: '#815ae6',
                 outline: 'none',
                 fontSize: '2rem',
-                backgroundColor: 'white'
+                backgroundColor: 'white',
+                ...mode === 'phone' ? {
+                    fontSize: '1rem',
+                } : {},
             }} type="submit">  <IoIosPaperPlane /></button>
 
         </div>
