@@ -4,9 +4,10 @@ import { IoIosArrowForward } from "react-icons/io";
 
 
 
-export function Chat({ chat }) {
+export function Chat({ chat, notifications }) {
     const [activeChat, setActiveChat] = useGlobal('activeChat')
     const [chats] = useGlobal('chats')
+    const [gnotifications, setGnotifications] = useGlobal('notifications')
 
 
     return <div style={{
@@ -19,6 +20,10 @@ export function Chat({ chat }) {
     }}>
         <div onClick={() => {
             setActiveChat(chat.ID)
+            setGnotifications({
+                ...gnotifications,
+                [chat.ID]: null
+            })
         }} style={{
             display: 'flex',
             alignItems: 'center',
@@ -51,7 +56,17 @@ export function Chat({ chat }) {
                     marginTop: 5
                 }}> Last date</div>
             </div>
-
+            {activeChat !== chat.ID && notifications && <div style={{
+                width: 13,
+                height: 13,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid gray',
+                borderRadius: 100,
+                marginBottom: 2,
+                fontSize: '0.8rem'
+            }}><span>{notifications}</span></div>}
             <div style={{
                 color: '#815ae6',
                 fontSize: '1.2rem',

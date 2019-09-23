@@ -18,7 +18,8 @@ setGlobal({
     mode: 'pc',
     me: null,
     showSelectimg: false,
-    showSettings: false
+    showSettings: false,
+    notifications: {},
 })
 onresize()
 window.addEventListener('resize', onresize)

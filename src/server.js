@@ -163,8 +163,8 @@ export async function avatar(avatar) { //mandar avatar
 }
 
 
-//const ws = 'ws://192.168.1.10:8081/ws'
-const ws = 'wss://chat.galax.be/ws'
+const ws = 'ws://192.168.1.10:8081/ws'
+//const ws = 'wss://chat.galax.be/ws'
 
 
 // Crea una nueva conexión.
@@ -239,7 +239,10 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
                 chat.Messages.push(msg.payload.message)
             }
             setGlobal({
-                chats: [...g.chats.filter(chat => chat.ID !== msg.payload.message.chatID), chat]
+                chats: [...g.chats.filter(chat => chat.ID !== msg.payload.message.chatID), chat],
+                notifications: {
+                    [chat.ID]: g.notifications[chat.ID] ? g.notifications[chat.ID] + 1 : 1
+                }
             })
             break;
     }

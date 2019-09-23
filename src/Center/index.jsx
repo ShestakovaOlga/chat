@@ -21,7 +21,7 @@ export function Center(props) {
     //Hacer scroll hacia abajo en los mensajes
     useEffect(() => {
         scroll.current.scrollTo(0, scroll.current.scrollHeight)
-    }, [chats])
+    }, [chats, activeChat])
 
 
     return <div style={{
