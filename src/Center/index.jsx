@@ -80,13 +80,13 @@ export function Center(props) {
                 </div>
             </div>)}
         </div>
-        <div style={{
+        {activeChat && <div style={{
             width: '100%',
             display: 'flex',
             alignItems: 'center',
             borderTop: '1px solid #BDC3C7'
         }}>
-            <textarea disabled={!activeChat} onChange={(e) => { setText(e.target.value) }}
+            <textarea autoFocus onChange={(e) => { setText(e.target.value) }}
                 onKeyPress={(e) => {
                     if (e.key == 'Enter' && !e.shiftKey) {
                         sendMessage(text, activeChat)
@@ -126,7 +126,7 @@ export function Center(props) {
                 } : {},
             }} type="submit">  <IoIosPaperPlane /></button>
 
-        </div>
+        </div>}
     </div>
 }
 

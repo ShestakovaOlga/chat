@@ -46,7 +46,7 @@ function Signup(props) {
                 flexDirection: 'column',
             }}>
                 <label htmlFor="">Full name</label>
-                <input onChange={(e) => { setFullname(e.target.value) }} style={{
+                <input autoFocus onChange={(e) => { setFullname(e.target.value) }} style={{
                     margin: '15px 0',
                     padding: 10,
                     border: 0,

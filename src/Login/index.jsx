@@ -52,7 +52,7 @@ function Login(props) {
                 flexDirection: 'column',
             }}>
                 <label htmlFor="">Email adress</label>
-                <input onChange={(e) => {
+                <input autoFocus onChange={(e) => {
                     setMail(e.target.value)
                 }} style={{
                     margin: '15px 0',
