@@ -107,7 +107,9 @@ export function Center(props) {
                     marginLeft: 10,
                     backgroundColor: 'white',
                     ...mode === 'phone' ? {
-                        height: '20px'
+                        height: '30px',
+                        borderRadius: 10,
+                        padding: 5,
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
             <button disabled={!activeChat} onClick={() => {
