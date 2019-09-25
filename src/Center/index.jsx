@@ -54,7 +54,7 @@ export function Center(props) {
                     display: 'flex',
                     alignItems: 'center',
                 }}>
-                    {[...users, me].find((u) => u.ID == message.author) ? <div style={{
+                    {(me ? [...users, me] : users).find((u) => u.ID == message.author) ? <div style={{
                         width: 40,
                         height: 45,
                         marginRight: 5,
