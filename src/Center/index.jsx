@@ -110,6 +110,7 @@ export function Center(props) {
                         height: '30px',
                         borderRadius: 10,
                         padding: 5,
+                        marginLeft: 0,
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
             <button disabled={!activeChat} onClick={() => {
@@ -126,6 +127,7 @@ export function Center(props) {
                 ...mode === 'phone' ? {
                     fontSize: '1rem',
                     width: 0,
+                    marginLeft: 5,
                 } : {},
             }} type="submit">  <IoIosPaperPlane /></button>
 
