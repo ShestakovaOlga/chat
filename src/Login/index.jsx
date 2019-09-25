@@ -27,7 +27,7 @@ function Login(props) {
         color: 'gray',
         ...['tablet', 'phone'].includes(mode) ? {
             width: '100%',
-            height: 0,
+            height: 'none',
         } : {},
     }}>
 
