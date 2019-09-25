@@ -127,7 +127,7 @@ export function Center(props) {
                 ...mode === 'phone' ? {
                     fontSize: '1rem',
                     width: 0,
-                    marginLeft: 5,
+                    marginRight: 10,
                 } : {},
             }} type="submit">  <IoIosPaperPlane /></button>
 
