@@ -22,6 +22,7 @@ function Signup(props) {
         color: 'gray',
         ...['tablet', 'phone'].includes(mode) ? {
             width: '100%',
+            height: 'none',
         } : {},
     }}>
         <div style={{
