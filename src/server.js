@@ -163,8 +163,8 @@ export async function avatar(avatar) { //mandar avatar
 }
 
 
-const ws = 'ws://192.168.1.10:8081/ws'
-//const ws = 'wss://chat.galax.be/ws'
+//const ws = 'ws://192.168.1.10:8081/ws'
+const ws = 'wss://chat.galax.be/ws'
 
 
 // Crea una nueva conexión.
