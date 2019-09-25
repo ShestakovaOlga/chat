@@ -125,6 +125,7 @@ export function Center(props) {
                 backgroundColor: 'white',
                 ...mode === 'phone' ? {
                     fontSize: '1rem',
+                    width: 0,
                 } : {},
             }} type="submit">  <IoIosPaperPlane /></button>
 
