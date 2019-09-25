@@ -84,7 +84,8 @@ export function Center(props) {
             width: '100%',
             display: 'flex',
             alignItems: 'center',
-            borderTop: '1px solid #BDC3C7'
+            borderTop: '1px solid #BDC3C7',
+            position: 'fixed'
         }}>
             <textarea autoFocus onChange={(e) => { setText(e.target.value) }}
                 onKeyPress={(e) => {
