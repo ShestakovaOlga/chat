@@ -48,6 +48,7 @@ export function Settings(props) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            height: '100%'
         }}>
             <label htmlFor="">Cambiar el nombre</label>
             <input type="text" id='inputS' placeholder="Nombre" />
@@ -58,7 +59,7 @@ export function Settings(props) {
             <label htmlFor="">Nombre de la empresa</label>
             <input type="text" id='inputS' placeholder="Empresa" />
             {<button style={{
-                padding: 4,
+                padding: 6,
                 cursor: 'pointer',
                 borderRadius: '40px',
                 width: '90%',
