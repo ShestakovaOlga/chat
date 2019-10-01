@@ -49,7 +49,6 @@ export function Settings(props) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            height: '100%'
         }}>
             <label htmlFor="">Cambiar el nombre</label>
             <input type="text" id='inputS' placeholder="Nombre" />
