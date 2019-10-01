@@ -69,7 +69,11 @@ export function Settings(props) {
                 outline: 'none',
                 fontSize: '1rem',
                 fontFamily: "'Lexend Deca', sans-serif",
-                margin: '20px 30px'
+                margin: '20px 30px',
+                ...mode === 'phone' ? {
+                    height: 40,
+                    borderRadius: '20px',
+                } : {},
             }}>Guardar los cambios</button>}
             <Selectimg onChange={(i) => {
                 setImg(i)
@@ -90,7 +94,13 @@ export function Settings(props) {
             outline: 'none',
             fontSize: '1rem',
             fontFamily: "'Lexend Deca', sans-serif",
-            margin: '30px 20px'
+            margin: '30px 20px',
+            ...mode === 'phone' ? {
+                padding: 'none',
+                height: 50,
+                borderRadius: '20px',
+                margin: '20px',
+            } : {},
         }}>Guardar nueva contraseña</button>}
     </div>
 }
