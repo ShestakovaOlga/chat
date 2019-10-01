@@ -12,7 +12,7 @@ export function Settings(props) {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        height: '100%',
+        minHeight: '100%',
         backgroundColor: 'white',
         flex: 1,
         fontFamily: "'Roboto', sans-serif",
