@@ -27,7 +27,6 @@ export function Settings(props) {
         ...mode === 'tablet' ? {
             position: 'absolute',
             width: window.innerWidth / 4 * 3,
-            height: '100%',
             right: -11,
             bottom: 0,
             margin: '-5px 0px',
@@ -71,7 +70,7 @@ export function Settings(props) {
                 fontFamily: "'Lexend Deca', sans-serif",
                 margin: '20px 30px',
                 ...mode === 'phone' ? {
-                    height: 40,
+                    height: 80,
                     borderRadius: '20px',
                 } : {},
             }}>Guardar los cambios</button>}
