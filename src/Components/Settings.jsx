@@ -16,7 +16,6 @@ export function Settings(props) {
         flex: 1,
         fontFamily: "'Roboto', sans-serif",
         overflowY: 'scroll',
-        margin: '10px 0px',
         ...mode === 'phone' ? {
             position: 'absolute',
             top: 0,
@@ -39,7 +38,8 @@ export function Settings(props) {
             outline: 'none',
             backgroundColor: 'white',
             border: 'none',
-            width: 30
+            width: 30,
+            marginTop: 10,
         }}
             onClick={() => {
                 setShowSettings(false)
