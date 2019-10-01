@@ -70,7 +70,7 @@ export function Settings(props) {
                 fontFamily: "'Lexend Deca', sans-serif",
                 margin: '20px 30px',
                 ...mode === 'phone' ? {
-                    height: 80,
+                    height: 40,
                     borderRadius: '20px',
                 } : {},
             }}>Guardar los cambios</button>}
