@@ -100,11 +100,11 @@ export function Center(props) {
                 style={{
                     flexGrow: 1,
                     outline: 'none',
-                    padding: 10,
+                    padding: 7,
                     boxSizing: 'border-box',
                     resize: 'none',
                     border: '1px solid #BDC3C7',
-                    borderRadius: 20,
+                    borderRadius: 15,
                     fontSize: '0.8rem',
                     marginLeft: 10,
                     backgroundColor: 'white',
@@ -119,8 +119,8 @@ export function Center(props) {
                 sendMessage(text, activeChat)
                 setText('')
             }} style={{
-                width: 100,
-                height: 70,
+                width: 70,
+                height: 40,
                 border: 'none',
                 color: '#815ae6',
                 outline: 'none',
