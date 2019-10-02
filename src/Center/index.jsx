@@ -45,7 +45,7 @@ export function Center(props) {
 
         }}>
             {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.sort((a, b) => {
-                return a.date > b.date
+                return a.date > b.date ? 1 : -1
             }).map((message) => <div key={message.text + message.date} style={{
                 margin: '10px 0px',
                 padding: 2
@@ -58,12 +58,13 @@ export function Center(props) {
                         width: 40,
                         height: 45,
                         marginRight: 5,
-                    }}><img style={{ width: '100%', height: '100%' }} src={[...users, me].find((u) => u.ID == message.author).avatar} alt="" /></div> : <IoMdPerson style={{
-                        width: 30,
-                        height: 30,
-                        marginRight: 5,
-                        color: '#815ae6',
-                    }} />}
+                    }}><img style={{ width: '100%', height: '100%' }}
+                        src={[...users, me].find((u) => u.ID == message.author).avatar} alt="" /></div> : <IoMdPerson style={{
+                            width: 30,
+                            height: 30,
+                            marginRight: 5,
+                            color: '#815ae6',
+                        }} />}
                     <div style={{
                         display: 'flex',
                         flexDirection: 'column',
