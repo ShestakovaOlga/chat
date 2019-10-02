@@ -83,7 +83,7 @@ export function Center(props) {
         </div>
         {activeChat && <div style={{
             width: '100%',
-            height: 70,
+            height: 90,
             display: 'flex',
             alignItems: 'center',
             borderTop: '1px solid #BDC3C7',
