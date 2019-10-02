@@ -21,6 +21,7 @@ export function Center(props) {
     //Hacer scroll hacia abajo en los mensajes
     useEffect(() => {
         scroll.current.scrollTo(0, scroll.current.scrollHeight)
+        setText('')
     }, [chats, activeChat])
 
 
@@ -88,7 +89,7 @@ export function Center(props) {
             alignItems: 'center',
             borderTop: '1px solid #BDC3C7',
         }}>
-            <textarea autoFocus onChange={(e) => { setText(e.target.value) }}
+            <textarea onChange={(e) => { setText(e.target.value) }}
                 onKeyPress={(e) => {
                     if (e.key == 'Enter' && !e.shiftKey) {
                         sendMessage(text, activeChat)
