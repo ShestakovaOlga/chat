@@ -1,7 +1,7 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosCloseCircle, IoMdSettings, IoIosCamera } from "react-icons/io";
-import { getMe } from '../server';
+import { getMe } from '../server.old';
 
 
 
@@ -45,7 +45,7 @@ export function Menu(props) {
                 cursor: 'pointer',
                 pointerEvents: 'none'
             }} />
-            {me.avatar ? <div onClick={() => {
+            {me.avatar_url ? <div onClick={() => {
                 setShowSelectimg(!showSelectimg)
                 console.log(showSelectimg);
             }} style={{
@@ -55,7 +55,7 @@ export function Menu(props) {
                 color: '#815ae6',
                 cursor: 'pointer'
             }}>
-                <img style={{ width: '100%', height: '100%' }} src={me.avatar} alt="" />
+                <img style={{ width: '100%', height: '100%' }} src={me.avatar_url} alt="" />
             </div> : <IoMdPerson onClick={() => {
                 setShowSelectimg(!showSelectimg)
                 console.log(showSelectimg);
@@ -68,7 +68,7 @@ export function Menu(props) {
                 cursor: 'pointer'
             }} />}
             <div style={{ flex: 1 }}>
-                <span>{me.name}</span>
+                <span>{me.display_name}</span>
             </div>
             <button onClick={() => {
                 setShowSettings(!showSettings)

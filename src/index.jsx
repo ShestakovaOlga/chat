@@ -20,6 +20,8 @@ setGlobal({
     showSelectimg: false,
     showSettings: false,
     notifications: {},
+    text: '',
+    emojiActive: false,
 })
 onresize()
 window.addEventListener('resize', onresize)

@@ -4,12 +4,13 @@ import { sendMessage } from '../server';
 import { useEffect } from 'react';
 import { IoMdPerson } from "react-icons/io";
 import { Menu } from './Menu';
+import { EmojiList } from '../Components/EmojiList'
 
 
 
 
 export function Center(props) {
-    const [text, setText] = useState('')
+    const [text, setText] = useGlobal('text')
     const [activeChat, setActiveChat] = useGlobal('activeChat')
     const [chats] = useGlobal('chats')
     const scroll = useRef(null)
@@ -17,6 +18,7 @@ export function Center(props) {
     const [users] = useGlobal('users')
     const [me] = useGlobal('me')
     const [mode] = useGlobal('mode')
+    const [emojiActive, setemojiActive] = useGlobal('emojiActive')
 
     //Hacer scroll hacia abajo en los mensajes
     useEffect(() => {
@@ -46,7 +48,7 @@ export function Center(props) {
 
         }}>
             {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.sort((a, b) => {
-                return a.date > b.date ? 1 : -1
+                return a.date > b.date
             }).map((message) => <div key={message.text + message.date} style={{
                 margin: '10px 0px',
                 padding: 2
@@ -116,6 +118,11 @@ export function Center(props) {
                         marginLeft: 0,
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
+            {<button onClick={() => {
+                setemojiActive(true)
+                console.log(emojiActive);
+            }}>E</button>}
+
             <button disabled={!activeChat} onClick={() => {
                 sendMessage(text, activeChat)
                 setText('')

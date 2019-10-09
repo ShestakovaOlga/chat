@@ -9,6 +9,14 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@heroiclabs/nakama-js@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@heroiclabs/nakama-js/-/nakama-js-2.0.1.tgz#a1a5a44353591771dfd7ec387326770172f0be0a"
+  integrity sha1-oaWkQ1NZF3Hf1+w4cyZ3AXLwvgo=
+  dependencies:
+    Base64 "^1.0.1"
+    whatwg-fetch "^2.0.3"
+
 "@react-bootstrap/react-popper@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@react-bootstrap/react-popper/-/react-popper-1.2.1.tgz#4edf4851d5b4dcf2eb6b264ebbed1a7b7654177b"
@@ -60,6 +68,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+Base64@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/Base64/-/Base64-1.0.2.tgz#82a36d43f4b98659d72488afe008a905d2cbccdb"
+  integrity sha512-WufIun24IbKXKBCGmxau2cYAaGLJ1GJjXcqTUyUzYiQImCreWwvTagnZd9k3nHGPAdPxpvC+4FNN1OhQH2Vz7g==
 
 alphanum-sort@^1.0.0:
   version "1.0.2"
@@ -1666,3 +1679,8 @@ whatwg-fetch@>=0.10.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
   integrity sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==
+
+whatwg-fetch@^2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
+  integrity sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng==
