@@ -1,12 +1,6 @@
 import { setGlobal, getGlobal } from 'reactn'
 import swal from 'sweetalert';
-import { Client } from '@heroiclabs/nakama-js';
 
-var client = new Client("defaultkey", "192.168.1.10", 7350);
-client.ssl = false; // enable if server is run with an SSL certificate
-client.verbose = true
-
-const socket = { addEventListener: () => { }, socket: () => { } }
 
 //mandar un mensaje nuevo
 export function sendMessage(message, ID) {
@@ -55,37 +49,65 @@ export function Users() {
 
 //iniciar sesion
 export async function login(email, password) {
-    console.log('loging', email, password);
+    console.log('login');
 
-    const session = await client.authenticateEmail({
-        email: email,
-        password: password,
-        create: false,
-    });
-    localStorage.nakamaAuthToken = session.token;
-    setGlobal({
-        logged: true,
-        me: session
-    })
+    let ids = {}
+    socket.send(JSON.stringify({
+        command: 'login',
+        payload: {
+            email: email,
+            password: password,
+            pushToken: ids.userId
+        }
+    }));
+    console.log('after socket send');
+
+    // try {
+    //     ids = await OneSignal.getUserId()
+    // } catch (e) {
+    //     console.log(e);
+    // }
+    // console.log('after ids');
+
+
 }
 
 //registrarse
 export async function sendSignup(name, email, password, avatar) {
-    const session = await client.authenticateEmail({
-        email: email,
-        password: password,
-        create: true
-    });
-    localStorage.nakamaAuthToken = session.token;
-    await client.updateAccount(session, {
-        display_name: name,
-        avatar_url: "https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg",
-    });
+    socket.send(JSON.stringify({
+        command: 'newuser',
+        payload: {
+            name: name,
+            email: email,
+            password: password,
+            avatar
+        }
+    }));
+    // try {
+    //     await fetch(`${host}/newuser`, {
+    //         credentials: "include",
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             name,
+    //             email,
+    //             password,
+    //             avatar
+    //         }),
+    //         headers: {
+    //             'Content-type': 'application/json',
+    //             origin: window.location.host
+    //         }
+    //     })
+    //     console.log('user was created');
+
+    // } catch (er) {
+    //     console.log(er);
+    // }
 }
 
 
 export async function Logout() {  //cerrar la sesion
-    localStorage.removeItem('nakamaAuthToken')
+    localStorage.removeItem('token')
     window.location.reload()
 }
 
@@ -145,6 +167,8 @@ export async function avatar(avatar) { //mandar avatar
 const ws = 'wss://chat.galax.be/ws'
 
 
+// Crea una nueva conexión.
+const socket = new WebSocket(ws);
 
 // Abre la conexión
 socket.addEventListener('open', async function (event) {
