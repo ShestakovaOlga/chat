@@ -1,12 +1,13 @@
 import React, { useGlobal } from 'reactn';
+import { IoMdHappy, IoIosCloseCircle } from "react-icons/io";
 
 
 export function EmojiList() {
     const emojiList = ['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉',
-        '😊', '😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '☺️', '🙂', '🤗', '🤩',
+        '😊', '😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '🙂', '🤗', '🤩',
         '🤔', '🤨', '😐', '😑', '😶', '🙄', '😏', '😣', '😥', '😮', '🤐', '😯', '😪',
         '😫', '😴', '😌', '😛', '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑',
-        '😲', '☹️', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😧', '😨', '😩',
+        '😲', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😧', '😨', '😩',
         '🤯', '😬', '😰', '😱', '🥵', '🥶', '😳', '🤪', '😵', '😡', '😠', '🤬', '😷',
         '🤒', '🤕', '🤢', '🤮', '🤧', '😇', '🤠', '🤡', '🥳', '🥴', '🥺', '🤥', '🤫',
         '🤭', '🧐', '🤓', '😈', '👿', '👹', '👺', '💀', '👻', '👽', '🤖', '💩', '😺',
@@ -17,21 +18,33 @@ export function EmojiList() {
 
 
     return <div style={{
-        width: 25,
-        height: 20
+        width: 30,
+        height: 30,
     }}>
-        <button onClick={() => {
+        <button style={{
+            width: 30,
+            height: 30,
+            backgroundColor: 'white',
+            textAlign: 'center',
+            marginRight: 5,
+            fontSize: '1.3rem',
+            border: 'none',
+            outline: 'none',
+            color: '#815ae6',
+        }} onClick={() => {
             setemojiActive(true)
         }}>
-            E
-    </button>
+            <IoMdHappy />
+        </button>
         {emojiActive && <div style={{
-            border: '1px solid red',
+            border: '1px solid #E1E1E8',
+            borderRadius: 3,
             width: 300,
             height: 220,
             position: "relative",
-            bottom: 260,
+            bottom: 270,
             right: 250,
+            backgroundColor: 'white',
         }}>
             <div style={{
                 display: 'flex',

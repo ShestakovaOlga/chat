@@ -2,7 +2,7 @@ import React, { useState, useGlobal, useRef } from 'reactn';
 import { IoIosPaperPlane } from "react-icons/io";
 import { sendMessage } from '../server';
 import { useEffect } from 'react';
-import { IoMdPerson } from "react-icons/io";
+import { IoMdPerson, IoIosCloseCircle } from "react-icons/io";
 import { Menu } from './Menu';
 import { EmojiList } from '../Components/EmojiList'
 
@@ -116,18 +116,33 @@ export function Center(props) {
                         marginLeft: 0,
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
+            {emojiActive && <button style={{
+                width: 30,
+                height: 30,
+                backgroundColor: 'white',
+                textAlign: 'center',
+                marginLeft: 5,
+                fontSize: '1.3rem',
+                border: 'none',
+                outline: 'none',
+                color: '#815ae6',
+            }} onClick={() => {
+                setemojiActive(false)
+            }}><IoIosCloseCircle /></button>}
             <EmojiList />
             <button disabled={!activeChat} onClick={() => {
                 sendMessage(text, activeChat)
                 setText('')
             }} style={{
-                width: 70,
-                height: 40,
+                width: 30,
+                height: 30,
                 border: 'none',
                 color: '#815ae6',
                 outline: 'none',
-                fontSize: '2rem',
+                fontSize: '1.5rem',
                 backgroundColor: 'white',
+                marginLeft: 5,
+                padding: 0,
                 ...mode === 'phone' ? {
                     fontSize: '1rem',
                     width: 'none',
