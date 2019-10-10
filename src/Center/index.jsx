@@ -47,9 +47,7 @@ export function Center(props) {
             overflowY: 'scroll',
 
         }}>
-            {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.sort((a, b) => {
-                return a.date > b.date
-            }).map((message) => <div key={message.text + message.date} style={{
+            {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.map((message) => <div key={message.text + message.date} style={{
                 margin: '10px 0px',
                 padding: 2
             }}>
