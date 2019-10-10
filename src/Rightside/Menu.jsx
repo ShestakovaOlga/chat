@@ -1,7 +1,7 @@
 import React, { useEffect, useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosCloseCircle, IoMdSettings, IoIosCamera } from "react-icons/io";
-import { getMe } from '../server.old';
+import { getMe } from '../server';
 
 
 

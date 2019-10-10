@@ -47,7 +47,7 @@ export function Center(props) {
             overflowY: 'scroll',
 
         }}>
-            {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.map((message) => <div key={message.text + message.date} style={{
+            {chats.find(m => m.ID === activeChat) && chats.find(m => m.ID === activeChat).Messages.map((message) => <div key={message.text + message.CreatedAt} style={{
                 margin: '10px 0px',
                 padding: 2
             }}>
@@ -116,11 +116,7 @@ export function Center(props) {
                         marginLeft: 0,
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
-            {<button onClick={() => {
-                setemojiActive(true)
-                console.log(emojiActive);
-            }}>E</button>}
-
+            <EmojiList />
             <button disabled={!activeChat} onClick={() => {
                 sendMessage(text, activeChat)
                 setText('')
