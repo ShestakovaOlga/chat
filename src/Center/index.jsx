@@ -116,19 +116,6 @@ export function Center(props) {
                         marginLeft: 0,
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
-            {emojiActive && <button style={{
-                width: 30,
-                height: 30,
-                backgroundColor: 'white',
-                textAlign: 'center',
-                marginLeft: 5,
-                fontSize: '1.3rem',
-                border: 'none',
-                outline: 'none',
-                color: '#815ae6',
-            }} onClick={() => {
-                setemojiActive(false)
-            }}><IoIosCloseCircle /></button>}
             <EmojiList />
             <button disabled={!activeChat} onClick={() => {
                 sendMessage(text, activeChat)
