@@ -1,5 +1,8 @@
 import React, { useGlobal } from 'reactn';
-import { IoMdHappy, IoIosCloseCircle } from "react-icons/io";
+import { IoMdHappy, IoIosCloseCircle, IoMdFootball, IoMdFlag, } from "react-icons/io";
+import { FaHamburger, FaCar, } from "react-icons/fa";
+import { GoLightBulb } from "react-icons/go";
+
 
 
 export function EmojiList() {
@@ -192,11 +195,22 @@ export function EmojiList() {
             height: 220,
             position: "relative",
             bottom: 270,
-            right: 250,
+            right: 200,
             backgroundColor: 'white',
             overflowY: 'scroll',
+            fontSize: '1.5rem',
         }}>
-            <span>Smileys & People</span>
+            <div style={{ display: 'flex', color: '#979A9A', fontSize: '1rem', padding: 5, }}>
+                <IoMdHappy />
+                <p style={{}} >'🐻'</p>
+                <FaHamburger />
+                <IoMdFootball />
+                <FaCar />
+                <GoLightBulb />
+                <p>'🔣' </p>
+                <IoMdFlag />
+            </div>
+            <span id='smileys' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>SMILEYS & PEOPLE</span>
             <div style={{
                 display: 'flex',
                 flexDirection: ' row',
@@ -208,7 +222,118 @@ export function EmojiList() {
                 }} onClick={() => {
                     setText(text + emoji)
                     setemojiActive(false)
-                }}> {emoji}</div>)} </div>
-        </div>}
-    </div>
+                }}> {emoji}</div>)}
+            </div>
+
+            <span id='animals' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>ANIMALS & NATURE</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiAnimals.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+
+            <span id='food' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>FOOD & DRINK</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiFood.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+
+            <span id='activity' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>ACTIVITY & SPORT</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiActivity.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+
+            <span id='travel' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>TRAVEL & PLACES</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiTravel.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+            <span id='objects' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>OBJECTS</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiObjects.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+            <span id='symbols' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>SYMBOLS</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiSymbols.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+            <span id='flags' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>FLAGS</span>
+            <div style={{
+                display: 'flex',
+                flexDirection: ' row',
+                flexWrap: 'wrap',
+            }}>
+                {emojiFlags.map((emoji) => <div style={{
+                    padding: 5,
+                    cursor: 'pointer'
+                }} onClick={() => {
+                    setText(text + emoji)
+                    setemojiActive(false)
+                }}> {emoji}</div>)}
+            </div>
+
+        </div>
+        }
+    </div >
 }
