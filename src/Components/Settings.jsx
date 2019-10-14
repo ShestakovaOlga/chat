@@ -27,7 +27,6 @@ export function Settings(props) {
             position: 'absolute',
             width: window.innerWidth / 4 * 3,
             right: -11,
-            bottom: 0,
             margin: '-5px 0px',
         } : {}
     }}>

@@ -85,22 +85,23 @@ export function Menu(props) {
                 margin: '10px 5px',
                 cursor: 'pointer',
             }}><IoMdSettings />{showSettings}</button>
+            <div style={{ width: 39, }}>
+                {['tablet', 'phone'].includes(mode) && <button style={{
+                    padding: 4,
+                    borderRadius: '40px',
+                    backgroundColor: 'white',
+                    color: '#815ae6',
+                    border: 'none',
+                    outline: 'none',
+                    fontSize: '1.5rem',
+                    margin: '10px 5px',
+                    cursor: 'pointer',
+                }} onClick={() => {
+                    setShowMenu(!showMenu)
+                }}><IoIosCloseCircle />{showMenu}</button>}
+            </div>
         </div>
 
-        <div>
-            {['tablet', 'phone'].includes(mode) && <button style={{
-                padding: 4,
-                borderRadius: '40px',
-                backgroundColor: 'white',
-                color: '#815ae6',
-                border: 'none',
-                outline: 'none',
-                fontSize: '1.5rem',
-                margin: '10px 5px',
-                cursor: 'pointer',
-            }} onClick={() => {
-                setShowMenu(!showMenu)
-            }}><IoIosCloseCircle />{showMenu}</button>}
-        </div>
+
     </div>
 }
