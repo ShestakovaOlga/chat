@@ -26,6 +26,7 @@ export function Center(props) {
         setText('')
     }, [chats, activeChat])
 
+    const disabled = !text
 
     return <div style={{
         display: 'flex',
@@ -117,7 +118,7 @@ export function Center(props) {
                     } : {},
                 }} name="" id="" value={text} placeholder='Escribe mensaje...'></textarea>
             <EmojiList />
-            <button disabled={!activeChat} onClick={() => {
+            <button disabled={!activeChat, disabled} onClick={() => {
                 sendMessage(text, activeChat)
                 setText('')
             }} style={{
