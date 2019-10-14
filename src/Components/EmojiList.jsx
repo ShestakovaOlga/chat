@@ -156,13 +156,14 @@ export function EmojiList() {
 
     const [text, setText] = useGlobal('text')
     const [emojiActive, setemojiActive] = useGlobal('emojiActive')
+    const [mode] = useGlobal('mode')
 
 
     return <div style={{
         width: 30,
         height: 30,
     }}>
-        {emojiActive ? <button style={{
+        {!['phone'].includes(mode) ? (emojiActive ? <button style={{
             width: 30,
             height: 30,
             backgroundColor: 'white',
@@ -187,7 +188,7 @@ export function EmojiList() {
             setemojiActive(true)
         }}>
                 <IoMdHappy />
-            </button>}
+            </button>) : true}
         {emojiActive && <div style={{
             border: '1px solid #E1E1E8',
             borderRadius: 3,
@@ -200,15 +201,23 @@ export function EmojiList() {
             overflowY: 'scroll',
             fontSize: '1.5rem',
         }}>
-            <div style={{ display: 'flex', color: '#979A9A', fontSize: '1rem', padding: 5, }}>
-                <IoMdHappy />
-                <p style={{}} >'🐻'</p>
-                <FaHamburger />
-                <IoMdFootball />
-                <FaCar />
-                <GoLightBulb />
-                <p>'🔣' </p>
-                <IoMdFlag />
+            <div style={{ display: 'flex', cursor: 'pointer', color: '#979A9A', fontSize: '1rem', padding: 5, filter: 'grayscale(100%)' }}>
+                {/* <IoMdHappy /> */}
+                <span onClick={() => {
+
+                }} style={{ padding: 3 }} >😀</span>
+                <span href="#animals" style={{ padding: 3 }} >🐻</span>
+                {/* <FaHamburger /> */}
+                <span style={{ padding: 3 }} >🍔</span>
+                {/* <IoMdFootball /> */}
+                <span style={{ padding: 3 }} >⚽️</span>
+                {/* <FaCar /> */}
+                <span style={{ padding: 3 }} >🚗</span>
+                {/* <GoLightBulb /> */}
+                <span style={{ padding: 3 }} >💡</span>
+                <span style={{ padding: 3 }} >🔣</span>
+                {/* <IoMdFlag /> */}
+                <span style={{ padding: 3 }} >🏳️</span>
             </div>
             <span id='smileys' style={{ padding: 4, fontSize: '0.8rem', color: '#979A9A' }}>SMILEYS & PEOPLE</span>
             <div style={{
