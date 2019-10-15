@@ -45,7 +45,7 @@ export function Menu(props) {
                 cursor: 'pointer',
                 pointerEvents: 'none'
             }} />
-            {me.avatar_url ? <div onClick={() => {
+            {me.avatar ? <div onClick={() => {
                 setShowSelectimg(!showSelectimg)
                 console.log(showSelectimg);
             }} style={{
@@ -55,7 +55,7 @@ export function Menu(props) {
                 color: '#815ae6',
                 cursor: 'pointer'
             }}>
-                <img style={{ width: '100%', height: '100%' }} src={me.avatar_url} alt="" />
+                <img style={{ width: '100%', height: '100%' }} src={me.avatar} alt="" />
             </div> : <IoMdPerson onClick={() => {
                 setShowSelectimg(!showSelectimg)
                 console.log(showSelectimg);
@@ -68,7 +68,7 @@ export function Menu(props) {
                 cursor: 'pointer'
             }} />}
             <div style={{ flex: 1 }}>
-                <span>{me.display_name}</span>
+                <span>{me.name}</span>
             </div>
             <button onClick={() => {
                 setShowSettings(!showSettings)
