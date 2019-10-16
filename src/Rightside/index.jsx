@@ -16,7 +16,8 @@ export function InfoPanel() {
     return <div style={{
         flex: 1,
         height: '100%',
-        backgroundColor: '#815ae6',
+        backgroundColor: '#fafafa',
+        //backgroundColor: '#815ae6',
         // background: 'linear-gradient(to right bottom #815ae6, #543698)',
         color: 'white',
         ...mode === 'phone' ? {

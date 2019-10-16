@@ -24,7 +24,7 @@ export function Menu(props) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: 'white',
+        backgroundColor: '#fafafa',
         color: '#815ae6',
         width: '100%',
         marginBottom: 20,
@@ -85,7 +85,7 @@ export function Menu(props) {
                 margin: '10px 5px',
                 cursor: 'pointer',
             }}><IoMdSettings />{showSettings}</button>
-            <div style={{ width: 39, }}>
+            <div>
                 {['tablet', 'phone'].includes(mode) && <button style={{
                     padding: 4,
                     borderRadius: '40px',

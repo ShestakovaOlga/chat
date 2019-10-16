@@ -13,7 +13,7 @@ export function Chat({ chat, notifications }) {
     return <div style={{
         display: 'flex',
         flexDirection: 'column',
-        border: '1px solid #E1E1E8',
+        borderRight: '1px solid #E1E1E8',
         overflowY: 'scroll',
         width: '100%',
         fontFamily: "'Roboto', sans-serif",
@@ -29,7 +29,7 @@ export function Chat({ chat, notifications }) {
             alignItems: 'center',
             backgroundColor: activeChat == chat.ID ? '#815ae6' : 'white',
             color: activeChat == chat.ID ? 'white' : 'black',
-            borderBottom: '1px solid #E1E1E8 ',
+            // borderBottom: '1px solid #E1E1E8 ',
             cursor: 'pointer',
         }}>
             {chat.avatar ? <div style={{

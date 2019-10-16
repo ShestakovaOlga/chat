@@ -17,7 +17,6 @@ export function CalendarZone() {
         }} style={{
             width: '100%',
             padding: 6,
-            backgroundColor: 'white',
             color: '#815ae6',
             cursor: 'pointer',
             display: 'flex',

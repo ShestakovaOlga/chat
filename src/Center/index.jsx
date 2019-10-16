@@ -1,6 +1,6 @@
 import React, { useState, useGlobal, useRef } from 'reactn';
 import { IoIosPaperPlane } from "react-icons/io";
-import { sendMessage } from '../server';
+import { sendMessage, getMe } from '../server';
 import { useEffect } from 'react';
 import { IoMdPerson, IoIosCloseCircle } from "react-icons/io";
 import { Menu } from './Menu';
@@ -25,6 +25,10 @@ export function Center(props) {
         scroll.current.scrollTo(0, scroll.current.scrollHeight)
         setText('')
     }, [chats, activeChat])
+
+    useEffect(() => {
+        getMe()
+    }, [])
 
     const disabled = !text
 
@@ -77,7 +81,8 @@ export function Center(props) {
                 </div>
                 <div style={{
                     padding: 5,
-                    borderTop: '1px solid #E8DAEF'
+                    borderTop: '1px solid #E8DAEF',
+                    backgroundColor: (me && me.ID == message.author) ? '#f6f2f7' : 'white',
                 }}>
                     {message.text}
                 </div>
@@ -85,7 +90,6 @@ export function Center(props) {
         </div>
         {activeChat && <div style={{
             width: '100%',
-            height: 90,
             display: 'flex',
             alignItems: 'center',
             borderTop: '1px solid #BDC3C7',

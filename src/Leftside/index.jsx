@@ -9,6 +9,7 @@ export function MainLeft() {
 
     return <div style={{
         height: '100%',
+        backgroundColor: 'white', //'#7662E1',
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
