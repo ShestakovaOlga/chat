@@ -7,6 +7,7 @@ import { avatar } from '../server'
 
 export function Selectimg({ onChange, value }) {
     const disabled = !value
+    const [logged] = useGlobal('logged')
     return <div style={{
         display: 'flex',
         flexDirection: 'column',
@@ -32,7 +33,7 @@ export function Selectimg({ onChange, value }) {
             }} src={value} alt="" />}
 
         </div>
-        {<button onClick={() => {
+        {logged ? <button onClick={() => {
             avatar()
         }} disabled={disabled} style={{
             padding: 4,
@@ -45,6 +46,6 @@ export function Selectimg({ onChange, value }) {
             fontSize: '0.8rem',
             fontFamily: "'Lexend Deca', sans-serif",
             margin: '5px 20px'
-        }}>Guardar</button>}
+        }}>Guardar</button> : false}
     </div>
 }

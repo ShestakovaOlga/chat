@@ -1,7 +1,7 @@
 import React, { useState, useGlobal } from 'reactn';
 import { Button } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
-import { sendSignup, Login } from '../server';
+import { sendSignup, Login, avatar } from '../server';
 import { Selectimg } from '../Rightside/Selectimg';
 
 
@@ -92,6 +92,7 @@ function Signup(props) {
                     setFullname('')
                     setMail('')
                     setPassword('')
+                    avatar()
                 }} style={{
                     padding: 6,
                     width: 200,

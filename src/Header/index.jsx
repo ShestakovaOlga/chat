@@ -36,7 +36,7 @@ export function Header() {
                 fontFamily: "'Lexend Deca', sans-serif",
                 cursor: 'pointer',
             }}>Log out</button>}
-            {['tablet', 'phone'].includes(mode) && <button style={{
+            {logged && (['tablet', 'phone'].includes(mode) && <button style={{
                 padding: '1px 4px',
                 width: 60,
                 borderRadius: '40px',
@@ -51,7 +51,7 @@ export function Header() {
             }}><IoIosMenu style={{
                 color: 'white',
                 fontSize: '1.2rem',
-            }} /></button>}
+            }} /></button>)}
         </div>
     </div>
 }

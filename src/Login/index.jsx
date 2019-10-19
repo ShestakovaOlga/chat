@@ -19,7 +19,7 @@ function Login(props) {
 
     return <div style={{
         width: '50%',
-        height: '100vw',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
