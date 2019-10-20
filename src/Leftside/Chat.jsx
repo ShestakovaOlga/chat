@@ -67,6 +67,7 @@ export function Chat({ chat, notifications }) {
                 border: '1px solid gray',
                 borderRadius: 100,
                 marginBottom: 2,
+                padding: 4,
                 fontSize: '0.8rem'
             }}><span>{notifications}</span></div>}
             <div style={{

@@ -19,7 +19,10 @@ export function ChatList(props) {
     return <div style={{
         height: '100%',
         overflowY: 'scroll',
+        display: 'flex',
+        flexDirection: 'column-reverse',
+        justifyContent: 'flex-end'
     }}>
-        {chats.map((chat) => <Chat key={chat.ID} chat={chat} notifications={notifications[chat.ID]} />)}
+        {chats.sort((a, b) => { a.UpdatedAt > b.UpdatedAt }).map((chat) => <Chat key={chat.ID} chat={chat} notifications={notifications[chat.ID]} />)}
     </div>
 }

@@ -96,12 +96,18 @@ export function Center(props) {
         }}>
             <textarea onChange={(e) => { setText(e.target.value) }}
                 onKeyPress={(e) => {
+                    if (e.key == 'Enter' && !text && !e.shiftKey) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return
+                    }
                     if (e.key == 'Enter' && !e.shiftKey) {
                         sendMessage(text, activeChat)
                         setText('')
                         e.preventDefault();
                         e.stopPropagation();
                     }
+
                 }}
                 style={{
                     flexGrow: 1,
