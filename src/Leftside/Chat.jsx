@@ -1,6 +1,7 @@
 import React, { useGlobal } from 'reactn';
 import { IoMdPerson } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { chatRead } from '../server';
 
 
 
@@ -19,6 +20,7 @@ export function Chat({ chat, notifications }) {
         fontFamily: "'Roboto', sans-serif",
     }}>
         <div onClick={() => {
+            chatRead(chat.ID)
             setActiveChat(chat.ID)
             setGnotifications({
                 ...gnotifications,

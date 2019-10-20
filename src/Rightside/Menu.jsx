@@ -77,7 +77,7 @@ export function Menu(props) {
             }} style={{
                 padding: 4,
                 borderRadius: '40px',
-                backgroundColor: 'white',
+                backgroundColor: '#f6f2f7',
                 color: '#815ae6',
                 border: 'none',
                 outline: 'none',
@@ -89,7 +89,7 @@ export function Menu(props) {
                 {['tablet', 'phone'].includes(mode) && <button style={{
                     padding: 4,
                     borderRadius: '40px',
-                    backgroundColor: 'white',
+                    backgroundColor: '#f6f2f7',
                     color: '#815ae6',
                     border: 'none',
                     outline: 'none',

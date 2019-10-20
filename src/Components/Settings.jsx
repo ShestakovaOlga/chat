@@ -1,12 +1,16 @@
 import React, { useState, useGlobal } from 'reactn'
 import { IoIosArrowBack } from "react-icons/io";
 import '../css/settings.css'
-import { Selectimg } from '../Rightside/Selectimg'
+import { Selectimg } from '../Rightside/Selectimg';
+import { sendSignup, avatar } from '../server';
 
 export function Settings(props) {
     const [showSettings, setShowSettings] = useGlobal('showSettings')
-    const [img, setImg] = useState(null)
     const [mode] = useGlobal('mode')
+    const [fullname, setFullname] = useGlobal('fullname')
+    const [mail, setMail] = useGlobal('mail')
+    const [password, setPassword] = useGlobal('password')
+    const [img, setImg] = useGlobal('img')
 
     return <div style={{
         display: 'flex',
@@ -48,15 +52,20 @@ export function Settings(props) {
             alignItems: 'center',
         }}>
             <label htmlFor="">Cambiar el nombre</label>
-            <input type="text" id='inputS' placeholder="Nombre" />
+            <input onChange={(e) => { setFullname(e.target.value) }} type="text" id='inputS' placeholder="Nombre" value={fullname} />
 
             <label htmlFor="">Cambiar el email</label>
-            <input type="email" id='inputS' placeholder="Email" />
+            <input onChange={(e) => { setMail(e.target.value) }} type="email" id='inputS' placeholder="Email" value={mail} />
 
             <label htmlFor="">Nombre de la empresa</label>
             <input type="text" id='inputS' placeholder="Empresa" />
-            {<button style={{
-                padding: 6,
+            {<button onClick={() => {
+                console.log('se ha hecho click');
+                setFullname(fullname)
+                console.log(fullname, 'se ha cambiado el nombre')
+                setMail(mail)
+            }} style={{
+                padding: 4,
                 cursor: 'pointer',
                 borderRadius: '40px',
                 width: '90%',
@@ -68,8 +77,8 @@ export function Settings(props) {
                 fontFamily: "'Lexend Deca', sans-serif",
                 margin: '20px 30px',
                 ...mode === 'phone' ? {
-                    height: 40,
                     borderRadius: '20px',
+                    padding: 0,
                 } : {},
             }}>Guardar los cambios</button>}
             <Selectimg onChange={(i) => {
@@ -77,8 +86,8 @@ export function Settings(props) {
             }} value={img} />
 
             <span style={{ margin: '50px 0 15px 0' }}>Cambiar la contraseña</span>
-            <input type="password" name="" id='inputS' placeholder="Nueva contraseña" />
-            <input type="password" name="" id='inputS' placeholder="Confirmar nueva contraseña" />
+            <input type="password" name="" id='inputS' placeholder="Nueva contraseña" value={password} />
+            <input type="password" name="" id='inputS' placeholder="Confirmar nueva contraseña" value={password} />
             <input type="password" name="" id='inputS' placeholder="Antigua contraseña" />
         </div>
         {<button style={{

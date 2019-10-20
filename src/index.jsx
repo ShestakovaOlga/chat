@@ -22,6 +22,10 @@ setGlobal({
     notifications: {},
     text: '',
     emojiActive: false,
+    fullname: '',
+    mail: '',
+    password: '',
+    img: null,
 })
 onresize()
 window.addEventListener('resize', onresize)

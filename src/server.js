@@ -146,6 +146,14 @@ export async function getChats() {  //traerse los chats
     }));
 }
 
+export async function chatRead(ID) {
+    socket.send(JSON.stringify({
+        command: 'chatread',
+        payload: {
+            ID
+        },
+    }));
+}
 
 export async function getMe() {  //traer los datos del usuario
     socket.send(JSON.stringify({
@@ -163,8 +171,8 @@ export async function avatar(avatar) { //mandar avatar
 }
 
 
-//const ws = 'ws://192.168.1.10:8081/ws'
-const ws = 'wss://chat.galax.be/ws'
+const ws = 'ws://192.168.1.10:8081/ws'
+//const ws = 'wss://chat.galax.be/ws'
 
 
 // Crea una nueva conexión.
@@ -232,6 +240,15 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
             swal(msg.payload.msg, '', msg.payload.isError ? "error" : "success");
             // msg.payload.isError
             break;
+        case 'notifications':
+            const n = msg.payload.notifications.filter(n => !n.read)
+            setGlobal({
+                notifications: n.length ? n.reduce((res, n) => {
+                    res[n.chat] ? res[n.chat] += 1 : res[n.chat] = 1
+                    return res
+                }, {}) : []
+            })
+            break;
         case 'message':
             const g = getGlobal()
             const chat = g.chats.find(chat => chat.ID === msg.payload.message.chatID)
@@ -240,9 +257,9 @@ function gotServerMessage(msg) {    //servidor manda los mensajes
             }
             setGlobal({
                 chats: [...g.chats.filter(chat => chat.ID !== msg.payload.message.chatID), chat],
-                notifications: {
-                    [chat.ID]: g.notifications[chat.ID] ? g.notifications[chat.ID] + 1 : 1
-                }
+                // notifications: {
+                //     [chat.ID]: g.notifications[chat.ID] ? g.notifications[chat.ID] + 1 : 1
+                // }
             })
             break;
     }
