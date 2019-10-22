@@ -56,7 +56,7 @@ export function Chat({ chat, notifications }) {
                     color: '#BDC3C7',//gris claro
                     fontSize: '0.9rem',
                     marginTop: 5
-                }}> Last date</div>
+                }}> {new Date(chat.Messages[chat.Messages.length - 1].UpdatedAt).toLocaleString()}</div>
             </div>
             {activeChat !== chat.ID && notifications && <div style={{
                 width: 13,
@@ -75,5 +75,5 @@ export function Chat({ chat, notifications }) {
                 fontSize: '1.2rem',
             }}><IoIosArrowForward /></div>
         </div>
-    </div>
+    </div >
 }

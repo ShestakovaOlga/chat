@@ -5,7 +5,7 @@ import { useReducer } from 'react';
 
 
 
-export function Menu(props) {
+export function Menu() {
     const [showMenu, setShowMenu] = useGlobal('showMenu')
     const [showGroups, setshowGroups] = useGlobal('showGroups')
     const [mode] = useGlobal('mode')
@@ -53,7 +53,7 @@ export function Menu(props) {
             }} />}
             <div>
                 <span>{activeChat && chats.find((chat) => chat.ID == activeChat).name}</span>
-                <div>Date</div>
+                <div>{new Date(chats.find((chat) => chat.ID == activeChat).Messages[chats.find((chat) => chat.ID == activeChat).Messages.length - 1].UpdatedAt).toLocaleString()}</div>
             </div>
         </div>
 

@@ -23,6 +23,6 @@ export function ChatList(props) {
         flexDirection: 'column-reverse',
         justifyContent: 'flex-end'
     }}>
-        {chats.sort((a, b) => { a.UpdatedAt > b.UpdatedAt }).map((chat) => <Chat key={chat.ID} chat={chat} notifications={notifications[chat.ID]} />)}
+        {chats.sort((a, b) => new Date(a.Messages[a.Messages.length - 1].UpdatedAt) - new Date(b.Messages[b.Messages.length - 1].UpdatedAt)).map((chat) => <Chat key={chat.ID} chat={chat} notifications={notifications[chat.ID]} />)}
     </div>
 }
