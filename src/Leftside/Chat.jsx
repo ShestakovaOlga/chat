@@ -52,11 +52,12 @@ export function Chat({ chat, notifications }) {
                 padding: 5,
             }}>{chat.name}
 
-                <div style={{
+                {chat.Messages.length > 0 && <div style={{
                     color: '#BDC3C7',//gris claro
                     fontSize: '0.9rem',
                     marginTop: 5
-                }}> {new Date(chat.Messages[chat.Messages.length - 1].UpdatedAt).toLocaleString()}</div>
+                }}> {new Date(chat.Messages[chat.Messages.length - 1].UpdatedAt).toLocaleString()}
+                </div>}
             </div>
             {activeChat !== chat.ID && notifications && <div style={{
                 width: 13,
