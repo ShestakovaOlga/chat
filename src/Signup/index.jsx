@@ -8,7 +8,7 @@ import { Selectimg } from '../Rightside/Selectimg';
 function Signup(props) {
     const [fullname, setFullname] = useGlobal('fullname')
     const [mail, setMail] = useGlobal('mail')
-    const [password, setPassword] = useStauseGlobalte('password')
+    const [password, setPassword] = useGlobal('password')
     const [img, setImg] = useGlobal('img')
     const [mode] = useGlobal('mode')
 
