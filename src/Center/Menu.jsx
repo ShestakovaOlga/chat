@@ -53,7 +53,7 @@ export function Menu() {
             }} />}
             <div>
                 <span>{activeChat && chats.find((chat) => chat.ID == activeChat).name}</span>
-                <div>{new Date(chats.find((chat) => chat.ID == activeChat).Messages[chats.find((chat) => chat.ID == activeChat).Messages.length - 1].UpdatedAt).toLocaleString()}</div>
+                {chats.find((chat) => chat.ID == activeChat).Messages.length > 0 && <div>{new Date(chats.find((chat) => chat.ID == activeChat).Messages[chats.find((chat) => chat.ID == activeChat).Messages.length - 1].UpdatedAt).toLocaleString()}</div>}
             </div>
         </div>
 

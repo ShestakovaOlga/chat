@@ -29,7 +29,7 @@ export function InfoPanel() {
         } : {},
         ...mode === 'tablet' ? {
             position: 'absolute',
-            width: window.innerWidth / 4 * 3,
+            width: window.innerWidth / 4 * 3.04,
             right: -11,
             bottom: 0,
         } : {}
